@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.DetailRomActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                />
+
+            <TextView
+                android:id="@+id/txtNama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ROM NAME"
+                android:textSize="30sp"
+                android:textColor="#000"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/txtDev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Developer :"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/txtIsiDev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/txtDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi :"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/txtIsiDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/txtRev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Review :"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/txtIsiRev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/txtWeb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Official Website :"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/txtIsiWeb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/txtUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Link Download :"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/txtIsiUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+
+
+</LinearLayout>

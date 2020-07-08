@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#2196F3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="grey">#808080</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="red">#FF0A1B</color>
+    <color name="bluenations">#74B9FF</color>
+    <color name="slide_first">#FF07B1</color>
+    <color name="slide_second">#03DAC5</color>
+    <color name="slide_third">#BBF05A</color>
+
+    <color name="card_start">#3EC2FA</color>
+    <color name="card_end">#526AEE</color>
+
+    <color name="grayicon">#2F3542</color>
+    <color name="slategray">#747D8C</color>
+
+    <color name="bgui">#292E42</color>
+    <color name="mainui">#F9D342</color>
+
+</resources>

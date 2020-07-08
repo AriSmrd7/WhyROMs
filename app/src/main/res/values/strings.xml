@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">WhyROMs</string>
+
+    <string name="base_api_roms">https://whyroms.000webhostapp.com/roms</string>
+
+    <string name="title_nav_rom">Custom ROM</string>
+    <string name="title_nav_phone">Device</string>
+    <string name="title_nav_magisk">Magisk</string>
+    <string name="title_nav_about">About</string>
+</resources>
