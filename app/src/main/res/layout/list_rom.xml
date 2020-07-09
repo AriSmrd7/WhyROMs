@@ -5,61 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp">
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="15dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="4dp">
+        android:layout_margin="2dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="15dp">
 
-                <RelativeLayout
-                    android:background="@drawable/bg_card_roms"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical">
-
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:padding="5dp">
+                        android:layout_gravity="center_horizontal"
+                        android:padding="2dp"
+                        android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_centerInParent="true"
-                            android:layout_marginEnd="5dp"
-                            android:layout_toStartOf="@id/image_view"
-                            android:orientation="vertical">
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/image_view"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:scaleType="centerCrop"
+                                android:outlineAmbientShadowColor="@color/bgui"
+                                android:src="@drawable/logowr"
+                                app:civ_border_color="@color/colorPrimary"
+                                app:civ_border_width="1dp" />
 
                             <TextView
                                 android:id="@+id/text_view_title"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
-                                android:textSize="24sp"
-                                android:text="ROM"
-                                android:layout_marginStart="5dp"
-                                android:fontFamily="@font/gilroybold" />
+                                android:textColor="@color/colorPrimary"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="16sp"
+                                android:text="ROM NAME"
+                                android:fontFamily="@font/cocogoose" />
 
-                        </LinearLayout>
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/image_view"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/logowr"
-                            app:civ_border_color="@color/colorPrimary"
-                            app:civ_border_width="2dp" />
-
-                    </RelativeLayout>
-
-                </RelativeLayout>
+                    </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

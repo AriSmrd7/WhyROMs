@@ -7,8 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.arismrd.whyroms.R;
@@ -38,8 +36,8 @@ public class DetailRomActivity extends AppCompatActivity {
 
 
     private RequestQueue mRequestQueue;
-    private String titleName;
-    private String fotoUrl;
+    private String namaROM;
+    private String logoROM;
 
 
 
@@ -49,13 +47,13 @@ public class DetailRomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_rom);
 
         Intent intent = getIntent();
-        titleName = intent.getStringExtra(EXTRA_TITLE);
-        fotoUrl = intent.getStringExtra(EXTRA_FOTO);
+        namaROM = intent.getStringExtra(EXTRA_TITLE);
+        logoROM = intent.getStringExtra(EXTRA_FOTO);
 
         TextView textViewCreator = findViewById(R.id.txtNama);
         ImageView imageView = findViewById(R.id.imgLogo);
-        Picasso.with(this).load(fotoUrl).fit().centerInside().into(imageView);
-        textViewCreator.setText(titleName);
+        Picasso.with(this).load(logoROM).fit().centerInside().into(imageView);
+        textViewCreator.setText(namaROM);
 
         mTextViewDev = findViewById(R.id.txtIsiDev);
         mTextViewDesc = findViewById(R.id.txtIsiDesc);
@@ -74,42 +72,33 @@ public class DetailRomActivity extends AppCompatActivity {
         String url = "https://whyroms.000webhostapp.com/roms";
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        int j;
-                        String nama, tDev , tDesc,
-                                tRev, tWeb, tUrl, fotos;
-                        try {
-                            JSONArray jsonArray = response.getJSONArray("data");
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject hit = jsonArray.getJSONObject(i);
-                                nama = hit.getString("nama_roms");
-                                tDev = hit.getString("developer_roms");
-                                tDesc = hit.getString("deskripsi_roms");
-                                tRev = hit.getString("review_roms");
-                                tWeb = hit.getString("web_roms");
-                                tUrl = hit.getString("url_roms");
-                                fotos = hit.getString("logo_roms");
+                response -> {
+                    String nama, tDev , tDesc,
+                            tRev, tWeb, tUrl, fotos;
+                    try {
+                        JSONArray jsonArray = response.getJSONArray("data");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject hit = jsonArray.getJSONObject(i);
+                            nama = hit.getString("nama_roms");
+                            tDev = hit.getString("developer_roms");
+                            tDesc = hit.getString("deskripsi_roms");
+                            tRev = hit.getString("review_roms");
+                            tWeb = hit.getString("web_roms");
+                            tUrl = hit.getString("url_roms");
+                            fotos = hit.getString("logo_roms");
 
-                                if (titleName.equals(nama) && fotoUrl.equals(fotos)) {
-                                    mTextViewDev.append(tDev);
-                                    mTextViewDesc.append(tDesc);
-                                    mTextViewRev.append(tRev);
-                                    mTextViewWeb.append(tWeb);
-                                    mTextViewUrl.append(tUrl);
-                                }
+                            if (namaROM.equals(nama) && logoROM.equals(fotos)) {
+                                mTextViewDev.append(tDev);
+                                mTextViewDesc.append(tDesc);
+                                mTextViewRev.append(tRev);
+                                mTextViewWeb.append(tWeb);
+                                mTextViewUrl.append(tUrl);
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
+                }, error -> error.printStackTrace());
 
         mRequestQueue.add(request);
 
