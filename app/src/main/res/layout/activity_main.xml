@@ -27,8 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_toStartOf="@id/rlImageSearch"
-            android:background="@drawable/bg_circle_radius_white">
+            android:layout_toStartOf="@id/rlImageSearch">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -41,9 +40,10 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerInParent="true"
                     android:layout_marginStart="20dp"
-                    android:text="Cari"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp"
+                    android:text="WhyROMs"
+                    android:fontFamily="@font/gilroybold"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
             </RelativeLayout>
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
-                android:padding="15dp"
+                android:padding="5dp"
                 android:src="@drawable/ic_logo"
                 android:tint="@color/colorPrimary" />
 
@@ -100,7 +100,7 @@
                     android:layout_gravity="center_vertical"
                     android:fontFamily="@font/gilroybold"
                     android:textColor="@color/colorPrimary"
-                    android:text="Selamat datang di WhyROMs :)"
+                    android:text=""
                     android:textSize="22sp"
 
                     />

@@ -26,15 +26,6 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.DeviceVi
 
     private Context mContext;
     private ArrayList<ModelDevices> mPhoneList;
-    private OnItemClickListener mListener;
-
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener){
-        mListener = listener;
-    }
 
     public DevicesAdapter(Context context, ArrayList<ModelDevices> phoneList){
         mContext = context;
@@ -67,7 +58,7 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.DeviceVi
         return mPhoneList.size();
     }
 
-    public class  DeviceViewHolder extends RecyclerView.ViewHolder{
+    public static class  DeviceViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView mImg;
         public TextView mName;
@@ -79,18 +70,6 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.DeviceVi
             mName = itemView.findViewById(R.id.txtName);
             mCode = itemView.findViewById(R.id.txtCode);
             mImg = itemView.findViewById(R.id.imgPhone);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mListener != null){
-                        int position = getAdapterPosition();
-
-                        if (position != RecyclerView.NO_POSITION){
-                            mListener.onItemClick(position);
-                        }
-                    }
-                }
-            });
 
         }
     }
