@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity implements RomsAdapter.OnItemClic
         super.onCreate(savedInstanceState);
         mRecyclerView = findViewById(R.id.rvListRoms);
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
         mRomList = new ArrayList<>();
         mRequestQueue = Volley.newRequestQueue(this);
         parseJson();

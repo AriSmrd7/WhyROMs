@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="2dp"
-        app:cardElevation="2dp"
-        app:cardCornerRadius="15dp">
+        app:cardElevation="3dp"
+        app:cardCornerRadius="8dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -24,13 +24,14 @@
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/image_view"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
+                                android:layout_width="110dp"
+                                android:layout_height="110dp"
                                 android:scaleType="centerCrop"
                                 android:outlineAmbientShadowColor="@color/bgui"
                                 android:src="@drawable/logowr"
                                 app:civ_border_color="@color/colorPrimary"
-                                app:civ_border_width="1dp" />
+                                app:civ_border_width="1dp"
+                                android:layout_marginBottom="10dp"/>
 
                             <TextView
                                 android:id="@+id/text_view_title"
@@ -38,7 +39,7 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorPrimary"
                                 android:layout_gravity="center_horizontal"
-                                android:textSize="16sp"
+                                android:textSize="20sp"
                                 android:text="ROM NAME"
                                 android:fontFamily="@font/cocogoose" />
 
