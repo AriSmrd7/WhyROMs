@@ -2,9 +2,9 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:bottom="0dp"
-        android:left="-110dp"
-        android:right="-110dp"
-        android:top="-190dp">
+        android:left="-490dp"
+        android:right="-140dp"
+        android:top="-180dp">
         <shape android:shape="oval">
             <solid android:color="@color/colorPrimary">
             </solid>

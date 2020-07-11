@@ -3,21 +3,28 @@
 
     <item
         android:id="@+id/navigation_rom"
-        android:icon="@drawable/ic_menu_kernel"
+        android:icon="@drawable/ic_home"
         android:title="@string/title_nav_rom" />
 
     <item
-        android:id="@+id/navigation_device"
-        android:icon="@drawable/ic_menu_rom"
+        android:id="@+id/navigaton_device"
+        android:icon="@drawable/ic_device"
         android:title="@string/title_nav_phone" />
 
     <item
+        android:id="@+id/navigaton_recovery"
+        android:icon="@drawable/ic_twrp"
+        android:title="@string/title_nav_recovery" />
+
+    <item
         android:id="@+id/navigation_magisk"
-        android:icon="@drawable/ic_menu_magisk"
+        android:icon="@drawable/ic_magisk"
         android:title="@string/title_nav_magisk" />
 
     <item
-        android:id="@+id/navigation_about"
-        android:icon="@drawable/ic_menu_about"
+        android:id="@+id/navigaton_about"
+        android:icon="@drawable/ic_info"
         android:title="@string/title_nav_about" />
+
+
 </menu>

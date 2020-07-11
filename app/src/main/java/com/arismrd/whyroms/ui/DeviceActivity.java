@@ -46,7 +46,7 @@ public class DeviceActivity extends BaseActivity {
 
     @Override
     int getNavigationMenuItemId() {
-        return R.id.navigation_device;
+        return R.id.navigaton_device;
     }
 
     @Override

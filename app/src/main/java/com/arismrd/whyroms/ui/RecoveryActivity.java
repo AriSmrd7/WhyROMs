@@ -7,14 +7,14 @@ import com.arismrd.whyroms.R;
  * UpdateCoding : -
  *
  * */
-public class AboutActivity extends BaseActivity {
+public class RecoveryActivity extends BaseActivity {
     @Override
     int getContentViewId() {
-        return R.layout.activity_about;
+        return R.layout.activity_recovery;
     }
 
     @Override
     int getNavigationMenuItemId() {
-        return R.id.navigaton_about;
+        return R.id.navigaton_recovery;
     }
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/bgui"
-    tools:context="com.arismrd.whyroms.ui.MagiskActivity"
+    tools:context="com.arismrd.whyroms.ui.RecoveryActivity"
     >
     <FrameLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             android:fontFamily="@font/gilroybold"
             android:layout_margin="20dp"
             android:layout_gravity="center_vertical"
-            android:text="MAGISK"
+            android:text="RECOVERY"
             />
 
     </FrameLayout>

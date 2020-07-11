@@ -10,7 +10,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:contentPadding="5dp">
+        app:contentPadding="5dp"
+        app:cardBackgroundColor="@color/bgui">
 
         <RelativeLayout
             android:background="@color/white"
@@ -22,7 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:background="@color/bgui">
 
                 <ImageView
                     android:id="@+id/imgPhone"
@@ -33,7 +35,7 @@
                     android:src="@drawable/logowr" />
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerInParent="true"
@@ -45,7 +47,7 @@
                         android:id="@+id/txtName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/txtui"
                         android:textSize="16sp"
                         android:text="MODEL NAME"
                         android:layout_alignParentLeft="true"
@@ -57,11 +59,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:textAlignment="viewEnd"
+                        android:gravity="right"
                         android:layout_toEndOf="@id/txtName"
-                        android:fontFamily="@font/cocogoose"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="CODENAME"
-                        android:textColor="@color/grayicon"
+                        android:textColor="@color/mainui"
                         android:textSize="14sp" />
 
                 </RelativeLayout>

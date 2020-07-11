@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/bgui"
     tools:context="com.arismrd.whyroms.ui.DeviceActivity"
     >
     <FrameLayout
@@ -36,8 +36,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="246dp"
-            android:layout_marginEnd="-105dp"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
             android:layout_toEndOf="@+id/titleModel"
             android:fontFamily="@font/gilroybold"
             android:text="Codename"

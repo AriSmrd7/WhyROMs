@@ -39,8 +39,6 @@ public class DetailRomActivity extends AppCompatActivity {
     private String namaROM;
     private String logoROM;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

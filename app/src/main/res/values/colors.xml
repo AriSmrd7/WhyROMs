@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2196F3</color>
-    <color name="colorPrimaryDark">#2196F3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#FE9A76</color>
+    <color name="colorPrimaryDark">#FE9A76</color>
+    <color name="colorAccent">#F7C6A8</color>
 
     <color name="grey">#808080</color>
     <color name="black">#000000</color>
@@ -19,7 +19,8 @@
     <color name="grayicon">#2F3542</color>
     <color name="slategray">#747D8C</color>
 
-    <color name="bgui">#292E42</color>
-    <color name="mainui">#F9D342</color>
+    <color name="bgui">#FFEADC</color>
+    <color name="txtui">#679A9B</color>
+    <color name="mainui">#393E46</color>
 
 </resources>

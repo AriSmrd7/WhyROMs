@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/bgui"
     android:orientation="vertical">
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="150dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,49 +26,29 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_toStartOf="@id/rlImageSearch">
+            android:layout_margin="10dp">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
                     android:layout_centerInParent="true"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="15dp"
                     android:text="WhyROMs"
                     android:fontFamily="@font/gilroybold"
                     android:textColor="@color/white"
-                    android:textSize="24sp"
+                    android:textSize="26sp"
                     android:textStyle="bold" />
 
             </RelativeLayout>
 
         </FrameLayout>
 
-        <RelativeLayout
-            android:id="@+id/rlImageSearch"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerInParent="true"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/bg_circle_radius_white"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_centerInParent="true"
-                android:padding="5dp"
-                android:src="@drawable/ic_logo"
-                android:tint="@color/colorPrimary" />
-
-        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -77,37 +57,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rlTopBar"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
         android:orientation="vertical"
-        android:paddingTop="55dp">
+        android:paddingTop="10dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             app:cardCornerRadius="25dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardElevation="4dp">
+            app:cardBackgroundColor="@color/bgui"
+            app:cardElevation="3dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_margin="5dp"
+                android:layout_width="395dp"
+                android:layout_height="75dp"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
                     android:layout_gravity="center_vertical"
                     android:fontFamily="@font/gilroybold"
-                    android:textColor="@color/colorPrimary"
                     android:text=""
-                    android:textSize="22sp"
-
-                    />
+                    android:textColor="@color/txtui"
+                    android:textSize="22sp" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="7dp"
+            android:layout_marginTop="7dp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/gilroybold"
+            android:textColor="@color/colorPrimary"
+            android:text="Daftar Custom ROM"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -116,6 +107,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/llMenu"
         android:layout_marginTop="5dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginLeft="6dp"
         android:layout_alignParentStart="true">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvListRoms"

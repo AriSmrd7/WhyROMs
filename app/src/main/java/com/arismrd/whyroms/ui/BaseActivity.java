@@ -25,7 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
         super.onCreate(savedInstanceState);
         setContentView(getContentViewId());
 
-        navigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        navigationView = findViewById(R.id.navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
     }
 
@@ -46,16 +46,20 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         navigationView.postDelayed(() -> {
             int itemId = item.getItemId();
+
             if (itemId == R.id.navigation_rom) {
                 startActivity(new Intent(this, MainActivity.class));
             }
-            else if (itemId == R.id.navigation_device) {
+            else if (itemId == R.id.navigaton_device) {
                 startActivity(new Intent(this, DeviceActivity.class));
+            }
+            else if (itemId == R.id.navigaton_recovery) {
+                startActivity(new Intent(this, RecoveryActivity.class));
             }
             else if (itemId == R.id.navigation_magisk) {
                 startActivity(new Intent(this, MagiskActivity.class));
             }
-            else if (itemId == R.id.navigation_about) {
+            else if (itemId == R.id.navigaton_about) {
                 startActivity(new Intent(this, AboutActivity.class));
             }
 
