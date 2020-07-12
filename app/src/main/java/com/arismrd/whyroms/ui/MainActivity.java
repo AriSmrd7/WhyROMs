@@ -17,6 +17,7 @@ import com.android.volley.toolbox.Volley;
 import com.arismrd.whyroms.R;
 import com.arismrd.whyroms.adapter.RomsAdapter;
 import com.arismrd.whyroms.model.ModelRoms;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,7 +41,7 @@ public class MainActivity extends BaseActivity implements RomsAdapter.OnItemClic
     private RequestQueue mRequestQueue;
 
     @Override
-    int getContentViewId() {
+    public int getContentViewId() {
         return R.layout.activity_main;
     }
 

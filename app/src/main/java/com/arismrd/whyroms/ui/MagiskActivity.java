@@ -9,7 +9,7 @@ import com.arismrd.whyroms.R;
  * */
 public class MagiskActivity extends BaseActivity {
     @Override
-    int getContentViewId() {
+    public int getContentViewId() {
         return R.layout.activity_magisk;
     }
 

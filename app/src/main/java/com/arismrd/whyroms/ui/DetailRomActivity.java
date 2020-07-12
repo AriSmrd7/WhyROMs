@@ -96,7 +96,7 @@ public class DetailRomActivity extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }, error -> error.printStackTrace());
+                }, Throwable::printStackTrace);
 
         mRequestQueue.add(request);
 

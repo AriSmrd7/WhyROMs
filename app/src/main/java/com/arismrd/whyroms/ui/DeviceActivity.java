@@ -40,7 +40,7 @@ public class DeviceActivity extends BaseActivity {
     private RequestQueue mRequestQueue;
 
     @Override
-    int getContentViewId() {
+    public int getContentViewId() {
         return R.layout.activity_device;
     }
 

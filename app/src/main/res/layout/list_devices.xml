@@ -49,7 +49,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/txtui"
                         android:textSize="16sp"
-                        android:text="MODEL NAME"
+                        android:text="@string/nama_model"
                         android:layout_alignParentLeft="true"
                         android:layout_marginStart="15dp"
                         android:fontFamily="@font/gilroybold" />
@@ -62,7 +62,7 @@
                         android:gravity="right"
                         android:layout_toEndOf="@id/txtName"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="CODENAME"
+                        android:text="@string/nama_kode"
                         android:textColor="@color/mainui"
                         android:textSize="14sp" />
 

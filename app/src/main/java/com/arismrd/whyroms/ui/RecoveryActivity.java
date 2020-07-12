@@ -9,7 +9,7 @@ import com.arismrd.whyroms.R;
  * */
 public class RecoveryActivity extends BaseActivity {
     @Override
-    int getContentViewId() {
+    public int getContentViewId() {
         return R.layout.activity_recovery;
     }
 

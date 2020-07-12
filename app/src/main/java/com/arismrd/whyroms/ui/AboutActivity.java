@@ -1,6 +1,8 @@
 package com.arismrd.whyroms.ui;
 
 import com.arismrd.whyroms.R;
+import com.arismrd.whyroms.ui.BaseActivity;
+
 /**
  * Nama : Ari Sumardi
  * NIM  : 10117162
@@ -9,7 +11,7 @@ import com.arismrd.whyroms.R;
  * */
 public class AboutActivity extends BaseActivity {
     @Override
-    int getContentViewId() {
+    public int getContentViewId() {
         return R.layout.activity_about;
     }
 

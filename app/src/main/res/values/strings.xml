@@ -10,4 +10,18 @@
     <string name="title_nav_recovery">Recovery</string>
 
     <string name="name_rom">Nama ROM</string>
+
+    <string name="detail_nama">Nama ROM</string>
+    <string name="detail_dev">Developer :</string>
+    <string name="detail_desc">Tentang ROM :</string>
+    <string name="detail_web">Official Website :</string>
+    <string name="detail_link">Link Download :</string>
+
+    <string name="nama_model">Modelname</string>
+    <string name="nama_kode">Codename</string>
+
+    <string name="page_device">List Device</string>
+    <string name="page_about">About App</string>
+    <string name="page_magisk">Download Magisk</string>
+    <string name="page_recovery">Custom Recovery</string>
 </resources>

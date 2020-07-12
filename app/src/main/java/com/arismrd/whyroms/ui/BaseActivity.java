@@ -6,6 +6,7 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.arismrd.whyroms.R;
 
@@ -78,7 +79,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
         item.setChecked(true);
     }
 
-    abstract int getContentViewId();
+    protected abstract int getContentViewId();
 
     abstract int getNavigationMenuItemId();
 
