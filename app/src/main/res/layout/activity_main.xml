@@ -77,8 +77,8 @@
                 <com.synnapps.carouselview.CarouselView
                     android:id="@+id/carouselView"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:background="@color/white"
+                    android:layout_height="165dp"
+                    android:background="@color/grayicon"
                     android:foreground="@drawable/bg_gradient_rom"
                     app:animateOnBoundary="true"
                     app:autoPlay="true"
@@ -88,23 +88,63 @@
                     app:pageTransformInterval="1500"
                     app:pageTransformer="depth"
                     app:radius="6dp"
-                    app:slideInterval="3000"
+                    app:slideInterval="6000"
                     app:strokeColor="@color/slategray"
                     app:indicatorVisibility="gone"
                     app:strokeWidth="1dp"/>
 
             </RelativeLayout>
+v
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="4dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_card_grad"
+                    android:padding="5dp">
+                    <ImageView
+                        android:id="@+id/iconThanks"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:src="@drawable/ic_learn"/>
+
+                    <TextView
+                        android:id="@+id/textDownload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toEndOf="@+id/iconThanks"
+                        android:fontFamily="@font/cocogoose"
+                        android:text="@string/thanks"
+                        android:textColor="@color/grayicon"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:paddingTop="7dp"
+                android:layout_marginBottom="8dp"
+                android:textStyle="bold"
                 android:layout_gravity="center_vertical"
                 android:fontFamily="@font/gilroybold"
-                android:textColor="@color/colorPrimary"
-                android:text="@string/in_home_title"
-                android:textSize="14sp" />
+                android:text="@string/download_now"
+                android:textColor="@color/txtui"
+                android:textSize="16sp" />
 
         </LinearLayout>
 

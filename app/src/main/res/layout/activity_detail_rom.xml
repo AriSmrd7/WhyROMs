@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/detail_dev"
                     android:textSize="20sp"
-                    android:textColor="#000"
+                    android:textColor="@color/txtui"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp" />
 
@@ -79,6 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
+                    android:textColor="@color/mainui"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp" />
 
@@ -88,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/detail_desc"
                     android:textSize="20sp"
-                    android:textColor="#000"
+                    android:textColor="@color/txtui"
                     android:layout_marginTop="30dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp" />
@@ -98,6 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
+                    android:textColor="@color/mainui"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp" />
 
@@ -107,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/detail_rev"
                     android:textSize="20sp"
-                    android:textColor="#000"
+                    android:textColor="@color/txtui"
                     android:layout_marginTop="30dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp" />
@@ -117,15 +119,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
+                    android:textColor="@color/mainui"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp" />
-                    <TextView
+            <TextView
                     android:id="@+id/txtWeb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/detail_web"
                     android:textSize="20sp"
-                    android:textColor="#000"
+                    android:textColor="@color/txtui"
                     android:layout_marginTop="30dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp" />
@@ -136,6 +139,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:autoLink="web"
+                    android:textColor="@color/grey"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp" />
 
@@ -145,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/detail_link"
                     android:textSize="20sp"
-                    android:textColor="#000"
+                    android:textColor="@color/txtui"
                     android:layout_marginTop="30dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp" />
@@ -156,17 +160,19 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:autoLink="web"
+                    android:textColor="@color/grey"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp" />
 
                 <Button
                     android:id="@+id/btnDownload"
-                    android:layout_width="wrap_content"
+                    android:layout_marginTop="95dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/bg_rectangle"
-                    android:padding="9dp"
-                    android:textColor="@color/white"
+                    android:background="@drawable/bg_btn_grad"
+                    android:padding="11dp"
+                    android:textColor="@color/mainui"
                     android:textSize="16sp"
                     android:text="Download"
                     />

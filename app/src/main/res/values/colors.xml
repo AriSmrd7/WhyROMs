@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FE9A76</color>
-    <color name="colorPrimaryDark">#FE9A76</color>
-    <color name="colorAccent">#F7C6A8</color>
+    <color name="colorPrimary">#232931</color>
+    <color name="colorPrimaryDark">#232931</color>
+    <color name="colorAccent">#4ECCA3</color>
 
     <color name="grey">#808080</color>
     <color name="black">#000000</color>
@@ -13,14 +13,14 @@
     <color name="slide_second">#03DAC5</color>
     <color name="slide_third">#BBF05A</color>
 
-    <color name="card_start">#3EC2FA</color>
-    <color name="card_end">#526AEE</color>
+    <color name="card_start">#00FFFF</color>
+    <color name="card_end">#007FFF</color>
 
     <color name="grayicon">#2F3542</color>
     <color name="slategray">#747D8C</color>
 
-    <color name="bgui">#FFEADC</color>
-    <color name="txtui">#679A9B</color>
-    <color name="mainui">#393E46</color>
+    <color name="bgui">#393E46</color>
+    <color name="txtui">#4ECCA3</color>
+    <color name="mainui">#EEEEEE</color>
 
 </resources>

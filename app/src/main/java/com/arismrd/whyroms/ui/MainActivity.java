@@ -1,8 +1,6 @@
 package com.arismrd.whyroms.ui;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import com.android.volley.Cache;
 import com.android.volley.NetworkResponse;
@@ -15,9 +13,8 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.arismrd.whyroms.R;
-import com.arismrd.whyroms.adapter.MagiskAdapter;
-import com.arismrd.whyroms.model.ModelMagisk;
-import com.arismrd.whyroms.model.ModelRoms;
+import com.arismrd.whyroms.adapter.AddonsAdapter;
+import com.arismrd.whyroms.model.ModelAddons;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
@@ -28,8 +25,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import static com.arismrd.whyroms.ui.RomActivity.EXTRA_TITLE;
 
 /**
  * Nama : Ari Sumardi
@@ -43,14 +38,18 @@ public class MainActivity extends BaseActivity {
 
 
     private RecyclerView mRecyclerView;
-    private MagiskAdapter mMagiskAdapter;
-    private ArrayList<ModelMagisk> mMagiskList;
+    private AddonsAdapter mAddonsAdapter;
+    private ArrayList<ModelAddons> mMagiskList;
     private RequestQueue mRequestQueue;
 
     CarouselView carouselView;
 
 
-    int[] sampleImages = {R.drawable.ic_home, R.drawable.ic_device, R.drawable.ic_magisk};
+    int[] sampleImages = {
+            R.drawable.slide_first,
+            R.drawable.slide_second,
+            R.drawable.slide_third
+    };
 
     @Override
     public int getContentViewId() {
@@ -87,13 +86,13 @@ public class MainActivity extends BaseActivity {
         progressDialog.setMessage("Mohon tunggu...");
         progressDialog.show();
 
-        String url = "https://whyroms.000webhostapp.com/magisk";
+        String url = "https://whyroms.000webhostapp.com/addons";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
                     String tVersi, tStatus, tImage, tLink;
 
                     try {
-                        JSONArray jsonArray = response.getJSONArray("magisk");
+                        JSONArray jsonArray = response.getJSONArray("addons");
 
                         for (int i = 0; i < jsonArray.length(); i++){
                             JSONObject hit = jsonArray.getJSONObject(i);
@@ -102,15 +101,15 @@ public class MainActivity extends BaseActivity {
                             tStatus = hit.getString("status");
                             tImage  = hit.getString("image");
                             tLink  = hit.getString("link");
-                            mMagiskList.add(new ModelMagisk
+                            mMagiskList.add(new ModelAddons
                                     (
                                             tVersi, tStatus,tImage, tLink
                                     )
                             );
                         }
-                        mMagiskAdapter = new MagiskAdapter(MainActivity.this, mMagiskList);
-                        mRecyclerView.setAdapter(mMagiskAdapter);
-                        mMagiskAdapter.notifyDataSetChanged();
+                        mAddonsAdapter = new AddonsAdapter(MainActivity.this, mMagiskList);
+                        mRecyclerView.setAdapter(mAddonsAdapter);
+                        mAddonsAdapter.notifyDataSetChanged();
                         progressDialog.dismiss();
                     } catch (JSONException e) {
                         e.printStackTrace();

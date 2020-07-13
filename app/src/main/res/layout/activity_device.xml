@@ -33,7 +33,7 @@
             <View
                 android:layout_width="50dp"
                 android:layout_height="3dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/txtui"/>
         </LinearLayout>
 
     </FrameLayout>
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:fontFamily="@font/gilroybold"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/txtui"
             android:text="@string/nama_model"
             />
 
@@ -60,7 +60,7 @@
             android:layout_toEndOf="@+id/titleModel"
             android:fontFamily="@font/gilroybold"
             android:text="@string/nama_kode"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/txtui"
             android:textSize="18sp" />
     </RelativeLayout>
 

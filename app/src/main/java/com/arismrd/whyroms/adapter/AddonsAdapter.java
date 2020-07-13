@@ -1,6 +1,5 @@
 package com.arismrd.whyroms.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,12 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.arismrd.whyroms.model.ModelMagisk;
+import com.arismrd.whyroms.model.ModelAddons;
 import com.arismrd.whyroms.R;
 import com.squareup.picasso.Picasso;
 
@@ -27,12 +25,12 @@ import java.util.ArrayList;
  *
  * */
 
-public class MagiskAdapter extends RecyclerView.Adapter<MagiskAdapter.MagiskViewHolder> {
+public class AddonsAdapter extends RecyclerView.Adapter<AddonsAdapter.MagiskViewHolder> {
 
     Context mContext;
-    private ArrayList<ModelMagisk> mMagiskList;
+    private ArrayList<ModelAddons> mMagiskList;
 
-    public MagiskAdapter(Context context, ArrayList<ModelMagisk> magiskList){
+    public AddonsAdapter(Context context, ArrayList<ModelAddons> magiskList){
         this.mContext = context;
         this.mMagiskList = magiskList;
     }
@@ -41,14 +39,14 @@ public class MagiskAdapter extends RecyclerView.Adapter<MagiskAdapter.MagiskView
     @Override
     public MagiskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(mContext).inflate(R.layout.list_magisk, parent, false);
+        View v = LayoutInflater.from(mContext).inflate(R.layout.list_addons, parent, false);
         return new MagiskViewHolder(v);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull MagiskViewHolder holder, int position) {
-        ModelMagisk currentItem = mMagiskList.get(position);
+        ModelAddons currentItem = mMagiskList.get(position);
 
         String tVersi  = currentItem.getmVersi();
         String tStatus = currentItem.getmStatus();

@@ -8,13 +8,13 @@ package com.arismrd.whyroms.model;
  *
  * */
 
-public class ModelMagisk {
+public class ModelAddons {
     private String mVersi;
     private String mStatus;
     private String mImage;
     private String mLink;
 
-    public ModelMagisk(
+    public ModelAddons(
             String versi, String status, String image, String link
             )
     {
