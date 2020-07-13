@@ -26,7 +26,7 @@
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     android:src="@drawable/logowr"
-                    />
+                    android:foreground="@drawable/bg_gradient_rom"/>
 
                 <TextView
                     android:id="@+id/text_view_title"

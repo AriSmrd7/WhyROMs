@@ -37,9 +37,9 @@ import static com.arismrd.whyroms.ui.RomActivity.EXTRA_TITLE;
  * UpdateCoding : 22 Juni 2020, 21.00 - 01.28 WIB
  *
  * */
-public class MainActivity extends BaseActivity implements MagiskAdapter.OnItemClickListener {
+public class MainActivity extends BaseActivity {
 
-    public static final String EXTRA_LINK = "tLink";
+    //public static final String EXTRA_LINK = "tLink";
 
 
     private RecyclerView mRecyclerView;
@@ -111,8 +111,6 @@ public class MainActivity extends BaseActivity implements MagiskAdapter.OnItemCl
                         mMagiskAdapter = new MagiskAdapter(MainActivity.this, mMagiskList);
                         mRecyclerView.setAdapter(mMagiskAdapter);
                         mMagiskAdapter.notifyDataSetChanged();
-
-                        mMagiskAdapter.setOnItemClickListener(MainActivity.this);
                         progressDialog.dismiss();
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -171,11 +169,4 @@ public class MainActivity extends BaseActivity implements MagiskAdapter.OnItemCl
         mRequestQueue.add(request);
     }
 
-    @Override
-    public void onItemClick(int position) {
-        Intent detailIntent = new Intent(this, MainActivity.class);
-        ModelMagisk clickedItem = mMagiskList.get(position);
-        detailIntent.putExtra(EXTRA_LINK, clickedItem.getmLink());
-        startActivity(detailIntent);
-    }
 }

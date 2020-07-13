@@ -1,11 +1,16 @@
 package com.arismrd.whyroms.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,22 +29,12 @@ import java.util.ArrayList;
 
 public class MagiskAdapter extends RecyclerView.Adapter<MagiskAdapter.MagiskViewHolder> {
 
-    private Context mContext;
+    Context mContext;
     private ArrayList<ModelMagisk> mMagiskList;
-    private OnItemClickListener mListener;
-
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener){
-        mListener = listener;
-    }
-
 
     public MagiskAdapter(Context context, ArrayList<ModelMagisk> magiskList){
-        mContext = context;
-        mMagiskList = magiskList;
+        this.mContext = context;
+        this.mMagiskList = magiskList;
     }
 
     @NonNull
@@ -58,9 +53,8 @@ public class MagiskAdapter extends RecyclerView.Adapter<MagiskAdapter.MagiskView
         String tVersi  = currentItem.getmVersi();
         String tStatus = currentItem.getmStatus();
         String tImage  = currentItem.getmImage();
-        String tLink  = currentItem.getmLink();
 
-        holder.mLink.setText(tLink);
+        holder.mLink = currentItem.getmLink();
         holder.mVersi.setText(tVersi);
         holder.mStatus.setText(tStatus);
         Picasso.with(mContext).load(tImage).into(holder.mImage);
@@ -76,7 +70,7 @@ public class MagiskAdapter extends RecyclerView.Adapter<MagiskAdapter.MagiskView
         public ImageView mImage;
         public TextView mVersi;
         public TextView mStatus;
-        public TextView mLink;
+        public String mLink;
 
         public MagiskViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,7 +78,11 @@ public class MagiskAdapter extends RecyclerView.Adapter<MagiskAdapter.MagiskView
             mVersi = itemView.findViewById(R.id.txtMagiskVersion);
             mStatus = itemView.findViewById(R.id.txtMagiskStatus);
             mImage = itemView.findViewById(R.id.imgMagisk);
-            mLink  = itemView.findViewById(R.id.txtMagiskLink);
+
+            itemView.setOnClickListener(v -> {
+              Intent GoUrl = new Intent(Intent.ACTION_VIEW, Uri.parse(mLink));
+              itemView.getContext().startActivity(GoUrl);
+            });
         }
     }
 

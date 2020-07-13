@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.android.volley.Request;
@@ -34,6 +33,7 @@ public class DetailRomActivity extends AppCompatActivity {
 
     private TextView mTextViewDev;
     private TextView mTextViewDesc;
+    private TextView mTextViewRev;
     private TextView mTextViewWeb;
     private TextView mTextViewUrl;
 
@@ -53,6 +53,13 @@ public class DetailRomActivity extends AppCompatActivity {
         logoROM = intent.getStringExtra(EXTRA_FOTO);
         linkROM = intent.getStringExtra(EXTRA_LINK);
 
+        findViewById(R.id.btnDownload).setOnClickListener(v -> {
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(linkROM));
+            startActivity(i);
+        });
+
+
         TextView textViewCreator = findViewById(R.id.txtNama);
         ImageView imageView = findViewById(R.id.imgLogo);
         Picasso.with(this).load(logoROM).fit().centerInside().into(imageView);
@@ -60,6 +67,7 @@ public class DetailRomActivity extends AppCompatActivity {
 
         mTextViewDev = findViewById(R.id.txtIsiDev);
         mTextViewDesc = findViewById(R.id.txtIsiDesc);
+        mTextViewRev= findViewById(R.id.txtIsiRev);
         mTextViewWeb = findViewById(R.id.txtIsiWeb);
         mTextViewUrl = findViewById(R.id.txtIsiUrl);
 
@@ -75,8 +83,8 @@ public class DetailRomActivity extends AppCompatActivity {
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
-                    String nama, tDev , tDesc,
-                            tRev, tWeb, tUrl, fotos;
+                    String nama, tDev , tDesc, tRev,
+                           tWeb, tUrl, fotos;
                     try {
                         JSONArray jsonArray = response.getJSONArray("data");
                         for (int i = 0; i < jsonArray.length(); i++) {
@@ -84,6 +92,7 @@ public class DetailRomActivity extends AppCompatActivity {
                             nama = hit.getString("nama_roms");
                             tDev = hit.getString("developer_roms");
                             tDesc = hit.getString("deskripsi_roms");
+                            tRev = hit.getString("review_roms");
                             tWeb = hit.getString("web_roms");
                             tUrl = hit.getString("url_roms");
                             fotos = hit.getString("logo_roms");
@@ -91,6 +100,7 @@ public class DetailRomActivity extends AppCompatActivity {
                             if (namaROM.equals(nama) && logoROM.equals(fotos)) {
                                 mTextViewDev.append(tDev);
                                 mTextViewDesc.append(tDesc);
+                                mTextViewRev.append(tRev);
                                 mTextViewWeb.append(tWeb);
                                 mTextViewUrl.append(tUrl);
                             }

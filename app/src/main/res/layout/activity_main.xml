@@ -79,6 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:background="@color/white"
+                    android:foreground="@drawable/bg_gradient_rom"
                     app:animateOnBoundary="true"
                     app:autoPlay="true"
                     app:fillColor="@color/white"
