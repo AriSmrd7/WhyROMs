@@ -6,27 +6,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/bgui"
-    tools:context="com.arismrd.whyroms.ui.MagiskActivity"
+    tools:context="com.arismrd.whyroms.ui.DeviceActivity"
     >
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
-
+        android:layout_height="?actionBarSize">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_curved" />
+            android:background="@drawable/bg_rectangle" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
+            android:paddingTop="15dp"
             android:gravity="center"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/page_magisk"
+                android:text="@string/page_tutorial"
                 android:fontFamily="@font/gilroybold"
                 android:textColor="@color/white"
                 android:textSize="24sp" />

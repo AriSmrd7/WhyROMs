@@ -2,7 +2,6 @@ package com.arismrd.whyroms.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import com.android.volley.Cache;
 import com.android.volley.NetworkResponse;
@@ -15,11 +14,8 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.arismrd.whyroms.R;
-import com.arismrd.whyroms.adapter.MagiskAdapter;
-import com.arismrd.whyroms.model.ModelMagisk;
+import com.arismrd.whyroms.adapter.RomsAdapter;
 import com.arismrd.whyroms.model.ModelRoms;
-import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,98 +25,87 @@ import java.util.ArrayList;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.arismrd.whyroms.ui.RomActivity.EXTRA_TITLE;
-
 /**
  * Nama : Ari Sumardi
  * NIM  : 10117162
- * UpdateCoding : 22 Juni 2020, 21.00 - 01.28 WIB
+ * UpdateCoding : -
  *
  * */
-public class MainActivity extends BaseActivity implements MagiskAdapter.OnItemClickListener {
+public class RomActivity extends BaseActivity implements RomsAdapter.OnItemClickListener {
 
-    public static final String EXTRA_LINK = "tLink";
-
+    public static final String EXTRA_TITLE = "namaROM";
+    public static final String EXTRA_FOTO = "logoROM";
+    public static final String EXTRA_LINK = "linkROM";
 
     private RecyclerView mRecyclerView;
-    private MagiskAdapter mMagiskAdapter;
-    private ArrayList<ModelMagisk> mMagiskList;
+    private RomsAdapter mRomAdapter;
+    private ArrayList<ModelRoms> mRomList;
     private RequestQueue mRequestQueue;
-
-    CarouselView carouselView;
-
-
-    int[] sampleImages = {R.drawable.ic_home, R.drawable.ic_device, R.drawable.ic_magisk};
 
     @Override
     public int getContentViewId() {
-        return R.layout.activity_main;
+        return R.layout.activity_rom;
     }
 
     @Override
     int getNavigationMenuItemId() {
-        return R.id.navigation_home;
+        return R.id.navigaton_rom;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mRecyclerView = findViewById(R.id.rvListMagisk);
+        mRecyclerView = findViewById(R.id.rvListRoms);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
-        mMagiskList = new ArrayList<>();
+        mRomList = new ArrayList<>();
         mRequestQueue = Volley.newRequestQueue(this);
-        getMagiskData();
-
-        //slider
-        carouselView = findViewById(R.id.carouselView);
-
-        carouselView.setPageCount(sampleImages.length);
-        carouselView.setImageListener(imageListener);
+        parseJson();
 
     }
-    // To set simple images
-    ImageListener imageListener = (position, imageView) -> imageView.setImageResource(sampleImages[position]);
 
-    private void getMagiskData(){
+    private void parseJson(){
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Mohon tunggu...");
         progressDialog.show();
 
-        String url = "https://whyroms.000webhostapp.com/magisk";
+        String url = "https://whyroms.000webhostapp.com/roms";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
-                    String tVersi, tStatus, tImage, tLink;
+                    String titleNama, tLogo, tDev,
+                            tDesc, tRev, tWeb, tUrl;
 
                     try {
-                        JSONArray jsonArray = response.getJSONArray("magisk");
+                        JSONArray jsonArray = response.getJSONArray("data");
 
                         for (int i = 0; i < jsonArray.length(); i++){
                             JSONObject hit = jsonArray.getJSONObject(i);
 
-                            tVersi  = hit.getString("versi");
-                            tStatus = hit.getString("status");
-                            tImage  = hit.getString("image");
-                            tLink  = hit.getString("link");
-                            mMagiskList.add(new ModelMagisk
+                            titleNama = hit.getString("nama_roms");
+                            tLogo = hit.getString("logo_roms");
+                            tDev = hit.getString("developer_roms");
+                            tDesc = hit.getString("deskripsi_roms");
+                            tRev = hit.getString("review_roms");
+                            tWeb = hit.getString("web_roms");
+                            tUrl = hit.getString("url_roms");
+                            mRomList.add(new ModelRoms
                                     (
-                                            tVersi, tStatus,tImage, tLink
+                                            titleNama, tLogo,tDev, tDesc, tRev,tWeb,tUrl
                                     )
                             );
                         }
-                        mMagiskAdapter = new MagiskAdapter(MainActivity.this, mMagiskList);
-                        mRecyclerView.setAdapter(mMagiskAdapter);
-                        mMagiskAdapter.notifyDataSetChanged();
-
-                        mMagiskAdapter.setOnItemClickListener(MainActivity.this);
+                        mRomAdapter = new RomsAdapter(RomActivity.this, mRomList);
+                        mRecyclerView.setAdapter(mRomAdapter);
+                        mRomAdapter.notifyDataSetChanged();
+                        mRomAdapter.setOnItemClickListener(RomActivity.this);
                         progressDialog.dismiss();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }, error -> {
-                    error.printStackTrace();
-                    progressDialog.dismiss();
-                }){
+            error.printStackTrace();
+            progressDialog.dismiss();
+        }){
             @Override
             protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
                 try {
@@ -173,9 +158,11 @@ public class MainActivity extends BaseActivity implements MagiskAdapter.OnItemCl
 
     @Override
     public void onItemClick(int position) {
-        Intent detailIntent = new Intent(this, MainActivity.class);
-        ModelMagisk clickedItem = mMagiskList.get(position);
-        detailIntent.putExtra(EXTRA_LINK, clickedItem.getmLink());
+        Intent detailIntent = new Intent(this, DetailRomActivity.class);
+        ModelRoms clickedItem = mRomList.get(position);
+        detailIntent.putExtra(EXTRA_TITLE, clickedItem.getmNamaRom());
+        detailIntent.putExtra(EXTRA_FOTO, clickedItem.getmLogoRom());
+        detailIntent.putExtra(EXTRA_LINK, clickedItem.getmUrlRom());
         startActivity(detailIntent);
     }
 }

@@ -12,9 +12,10 @@
         android:roundIcon="@drawable/logowr"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.RecoveryActivity"></activity>
+
+        <activity android:name=".ui.RomActivity"></activity>
         <activity android:name=".ui.AboutActivity" />
-        <activity android:name=".ui.MagiskActivity" />
+        <activity android:name=".ui.TutorialActivity" />
         <activity android:name=".ui.DeviceActivity" />
         <activity
             android:name=".ui.SplashActivity"

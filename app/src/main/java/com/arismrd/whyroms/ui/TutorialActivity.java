@@ -7,14 +7,14 @@ import com.arismrd.whyroms.R;
  * UpdateCoding : -
  *
  * */
-public class MagiskActivity extends BaseActivity {
+public class TutorialActivity extends BaseActivity {
     @Override
     public int getContentViewId() {
-        return R.layout.activity_magisk;
+        return R.layout.activity_tutorial;
     }
 
     @Override
     int getNavigationMenuItemId() {
-        return R.id.navigation_magisk;
+        return R.id.navigation_tutorial;
     }
 }

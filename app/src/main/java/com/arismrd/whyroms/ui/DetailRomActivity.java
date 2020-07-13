@@ -2,7 +2,10 @@ package com.arismrd.whyroms.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.android.volley.Request;
@@ -16,8 +19,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static com.arismrd.whyroms.ui.MainActivity.EXTRA_FOTO;
-import static com.arismrd.whyroms.ui.MainActivity.EXTRA_TITLE;
+import static com.arismrd.whyroms.ui.RomActivity.EXTRA_FOTO;
+import static com.arismrd.whyroms.ui.RomActivity.EXTRA_LINK;
+import static com.arismrd.whyroms.ui.RomActivity.EXTRA_TITLE;
 
 /**
  * Nama : Ari Sumardi
@@ -30,7 +34,6 @@ public class DetailRomActivity extends AppCompatActivity {
 
     private TextView mTextViewDev;
     private TextView mTextViewDesc;
-    private TextView mTextViewRev;
     private TextView mTextViewWeb;
     private TextView mTextViewUrl;
 
@@ -38,6 +41,7 @@ public class DetailRomActivity extends AppCompatActivity {
     private RequestQueue mRequestQueue;
     private String namaROM;
     private String logoROM;
+    private String linkROM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,7 @@ public class DetailRomActivity extends AppCompatActivity {
         Intent intent = getIntent();
         namaROM = intent.getStringExtra(EXTRA_TITLE);
         logoROM = intent.getStringExtra(EXTRA_FOTO);
+        linkROM = intent.getStringExtra(EXTRA_LINK);
 
         TextView textViewCreator = findViewById(R.id.txtNama);
         ImageView imageView = findViewById(R.id.imgLogo);
@@ -55,17 +60,16 @@ public class DetailRomActivity extends AppCompatActivity {
 
         mTextViewDev = findViewById(R.id.txtIsiDev);
         mTextViewDesc = findViewById(R.id.txtIsiDesc);
-        mTextViewRev = findViewById(R.id.txtIsiRev);
         mTextViewWeb = findViewById(R.id.txtIsiWeb);
         mTextViewUrl = findViewById(R.id.txtIsiUrl);
 
         mRequestQueue = Volley.newRequestQueue(this);
-        jsonParse();
+        getDetailROM();
 
 
     }
 
-    private void jsonParse() {
+    private void getDetailROM() {
 
         String url = "https://whyroms.000webhostapp.com/roms";
 
@@ -80,7 +84,6 @@ public class DetailRomActivity extends AppCompatActivity {
                             nama = hit.getString("nama_roms");
                             tDev = hit.getString("developer_roms");
                             tDesc = hit.getString("deskripsi_roms");
-                            tRev = hit.getString("review_roms");
                             tWeb = hit.getString("web_roms");
                             tUrl = hit.getString("url_roms");
                             fotos = hit.getString("logo_roms");
@@ -88,7 +91,6 @@ public class DetailRomActivity extends AppCompatActivity {
                             if (namaROM.equals(nama) && logoROM.equals(fotos)) {
                                 mTextViewDev.append(tDev);
                                 mTextViewDesc.append(tDesc);
-                                mTextViewRev.append(tRev);
                                 mTextViewWeb.append(tWeb);
                                 mTextViewUrl.append(tUrl);
                             }
@@ -101,6 +103,5 @@ public class DetailRomActivity extends AppCompatActivity {
         mRequestQueue.add(request);
 
     }
-
 
 }

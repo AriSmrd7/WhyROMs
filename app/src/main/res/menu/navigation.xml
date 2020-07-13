@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_rom"
+        android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home"
-        android:title="@string/title_nav_rom" />
+        android:title="@string/title_nav_home" />
 
     <item
         android:id="@+id/navigaton_device"
@@ -12,14 +12,14 @@
         android:title="@string/title_nav_phone" />
 
     <item
-        android:id="@+id/navigaton_recovery"
-        android:icon="@drawable/ic_twrp"
-        android:title="@string/title_nav_recovery" />
+        android:id="@+id/navigaton_rom"
+        android:icon="@drawable/ic_rom"
+        android:title="@string/title_nav_rom" />
 
     <item
-        android:id="@+id/navigation_magisk"
-        android:icon="@drawable/ic_magisk"
-        android:title="@string/title_nav_magisk" />
+        android:id="@+id/navigation_tutorial"
+        android:icon="@drawable/ic_tutorial"
+        android:title="@string/title_nav_tutorial" />
 
     <item
         android:id="@+id/navigaton_about"
