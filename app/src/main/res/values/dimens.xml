@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="width_cardview_roms"></dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="title_bar_page">20sp</dimen>
+
+    <dimen name="name_list_device">14sp</dimen>
+    <dimen name="code_list_device">12sp</dimen>
+
+    <dimen name="title_list_device">16sp</dimen>
+    <dimen name="title_card_home">11sp</dimen>
+    <dimen name="title_card_status">10sp</dimen>
+    <dimen name="title_home">14sp</dimen>
+    <dimen name="in_card_home">14sp</dimen>
+
+    <dimen name="icon_bottom_nav">21dp</dimen>
+
+    <dimen name="title_video">18sp</dimen>
+    <dimen name="desc_video">14sp</dimen>
+    <dimen name="item_video">12sp</dimen>
 </resources>

@@ -32,7 +32,8 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                tools:ignore="UselessParent">
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -45,7 +46,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_marginStart="15dp"
-                        android:text="WhyROMs"
+                        android:text="@string/title_app"
                         android:fontFamily="@font/gilroybold"
                         android:textColor="@color/white"
                         android:textSize="24sp"
@@ -94,7 +95,7 @@
                     app:strokeWidth="1dp"/>
 
             </RelativeLayout>
-v
+
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
@@ -116,7 +117,8 @@ v
                         android:layout_marginEnd="5dp"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
-                        android:src="@drawable/ic_learn"/>
+                        android:src="@drawable/ic_learn"
+                        android:contentDescription="@string/img_description_home" />
 
                     <TextView
                         android:id="@+id/textDownload"
@@ -129,7 +131,7 @@ v
                         android:fontFamily="@font/cocogoose"
                         android:text="@string/thanks"
                         android:textColor="@color/grayicon"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/in_card_home" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -144,7 +146,7 @@ v
                 android:fontFamily="@font/gilroybold"
                 android:text="@string/download_now"
                 android:textColor="@color/txtui"
-                android:textSize="16sp" />
+                android:textSize="@dimen/title_home" />
 
         </LinearLayout>
 
@@ -173,7 +175,10 @@ v
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bgui"
+        app:backgroundTint="@color/bgui"
+        app:itemIconTint="@color/icon_silver"
+        app:itemTextColor="@color/icon_silver"
+        app:itemIconSize="@dimen/icon_bottom_nav"
         app:menu="@menu/navigation" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

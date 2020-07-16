@@ -29,7 +29,7 @@
                 android:text="@string/page_device"
                 android:fontFamily="@font/gilroybold"
                 android:textColor="@color/white"
-                android:textSize="24sp" />
+                android:textSize="@dimen/title_bar_page" />
             <View
                 android:layout_width="50dp"
                 android:layout_height="3dp"
@@ -41,27 +41,30 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
         android:padding="2dp">
         <TextView
             android:id="@+id/titleModel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="@dimen/title_list_device"
             android:fontFamily="@font/gilroybold"
-            android:textColor="@color/txtui"
+            android:textColor="@color/title_code_model"
             android:text="@string/nama_model"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:gravity="right"
             android:layout_toEndOf="@+id/titleModel"
             android:fontFamily="@font/gilroybold"
             android:text="@string/nama_kode"
-            android:textColor="@color/txtui"
-            android:textSize="18sp" />
+            android:textColor="@color/title_code_model"
+            android:textSize="@dimen/title_list_device"
+            tools:ignore="RtlHardcoded" />
     </RelativeLayout>
 
     <FrameLayout
@@ -73,9 +76,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/llMenu"
             android:layout_marginTop="5dp"
-            android:layout_alignParentStart="true">
+            tools:ignore="UselessParent">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvListDevices"
@@ -91,7 +93,6 @@
         android:id="@+id/navigation"
         layout="@layout/element_bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout >

@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="26sp"
+                android:textSize="@dimen/title_bar_page"
                 android:textColor="@color/mainui"
                 android:layout_marginStart="32dp"
                 android:layout_marginBottom="32dp"
@@ -90,7 +90,10 @@
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bgui"
+        app:backgroundTint="@color/bgui"
+        app:itemIconTint="@color/icon_silver"
+        app:itemTextColor="@color/icon_silver"
+        app:itemIconSize="@dimen/icon_bottom_nav"
         app:menu="@menu/navigation" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

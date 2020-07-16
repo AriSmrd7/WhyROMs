@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">WhyROMs</string>
 
+    <string name="title_app">WhyROMs</string>
+
+    <string name="img_description_home">Image</string>
+    <string name="img_description_device">Image</string>
+    <string name="img_description_rom">Image</string>
+
+
     <string name="base_api_roms">https://whyroms.000webhostapp.com/roms</string>
 
     <string name="title_nav_home">For You</string>
@@ -33,4 +40,12 @@
     <string name="magisk_download">Download Magisk</string>
 
     <string name="download_now">Download Now</string>
+    <string name="download_rom"><b>Download</b></string>
+
+    <string name="judul_video">Judul Video</string>
+    <string name="deskripsi_video">Deskripsi Video</string>
+    <string name="view_video">0 View</string>
+    <string name="author_video">Author</string>
+    <string name="tanggal_video">0 hari yang lalu.</string>
+
 </resources>

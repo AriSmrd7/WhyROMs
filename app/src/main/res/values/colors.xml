@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#232931</color>
-    <color name="colorPrimaryDark">#232931</color>
+    <color name="colorPrimary">#292E39</color>
+    <color name="colorPrimaryDark">#292E39</color>
     <color name="colorAccent">#4ECCA3</color>
 
     <color name="grey">#808080</color>
+    <color name="text_gray">#909999</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="red">#FF0A1B</color>
     <color name="bluenations">#74B9FF</color>
-    <color name="slide_first">#FF07B1</color>
-    <color name="slide_second">#03DAC5</color>
-    <color name="slide_third">#BBF05A</color>
+    <color name="hotpink">#DA37B7</color>
 
     <color name="card_start">#00FFFF</color>
     <color name="card_end">#007FFF</color>
@@ -19,8 +18,12 @@
     <color name="grayicon">#2F3542</color>
     <color name="slategray">#747D8C</color>
 
-    <color name="bgui">#393E46</color>
-    <color name="txtui">#4ECCA3</color>
+    <color name="bgui">#292E39</color>
+    <color name="txtui">#4480EA</color>
     <color name="mainui">#EEEEEE</color>
 
+    <color name="title_code_model">#CACAC7</color>
+    <color name="icon_silver">#B2B2B2</color>
+    <color name="steelblue">#1189C5</color>
+    <color name="dodgerblue">#4480EA</color>
 </resources>
