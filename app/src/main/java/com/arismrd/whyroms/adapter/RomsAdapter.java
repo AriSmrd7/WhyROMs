@@ -75,15 +75,12 @@ public class RomsAdapter extends RecyclerView.Adapter<RomsAdapter.RomViewHolder>
 
             mTextViewTitle = itemView.findViewById(R.id.text_view_title);
             mImageView = itemView.findViewById(R.id.image_view);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mListener != null){
-                        int position = getAdapterPosition();
+            itemView.setOnClickListener(v -> {
+                if (mListener != null){
+                    int position = getAdapterPosition();
 
-                        if (position != RecyclerView.NO_POSITION){
-                            mListener.onItemClick(position);
-                        }
+                    if (position != RecyclerView.NO_POSITION){
+                        mListener.onItemClick(position);
                     }
                 }
             });

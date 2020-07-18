@@ -1,51 +1,53 @@
 package com.arismrd.whyroms.model;
 
-import java.io.Serializable;
+/**
+ /**
+ * Nama : Ari Sumardi
+ * NIM  : 10117162
+ * Coding : 10 Juni 2020, 21.00 - 01.28 WIB
+ *
+ * */
 
-public class ModelTutorials implements Serializable {
-    private String title;
-    private String description;
-    private String author;
-    private String videoUrl;
-    private String imageUrl;
+public class ModelTutorials {
+    private String mTitle;
+    private String mSource;
+    private String mThumbnail;
 
-    public String getTitle() {
-        return title;
+
+    public ModelTutorials(
+            String title, String source, String thumbnail
+    )
+    {
+        mTitle = title;
+        mSource = source;
+        mThumbnail = thumbnail;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getmTitle() {
+        return mTitle;
     }
 
-    public String getDescription() {
-        return description;
+    public void setmTitle(String mTitle) {
+        this.mTitle = mTitle;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+
+    public String getmSource() {
+        return mSource;
     }
 
-    public String getAuthor() {
-        return author;
+    public void setmSource(String mSource) {
+        this.mSource = mSource;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+
+    public String getmThumbnail() {
+        return mThumbnail;
     }
 
-    public String getVideoUrl() {
-        return videoUrl;
+    public void setmThumbnail(String mThumbnail) {
+        this.mThumbnail = mThumbnail;
     }
 
-    public void setVideoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
-    }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
 }

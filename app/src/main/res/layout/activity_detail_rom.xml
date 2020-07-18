@@ -104,25 +104,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp" />
 
-                <TextView
-                    android:id="@+id/txtRev"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/detail_rev"
-                    android:textSize="20sp"
-                    android:textColor="@color/txtui"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp" />
 
-                <TextView
-                    android:id="@+id/txtIsiRev"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="@color/mainui"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp" />
             <TextView
                     android:id="@+id/txtWeb"
                     android:layout_width="wrap_content"

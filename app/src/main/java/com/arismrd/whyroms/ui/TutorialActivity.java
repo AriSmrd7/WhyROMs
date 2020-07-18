@@ -1,25 +1,32 @@
 package com.arismrd.whyroms.ui;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import com.android.volley.Cache;
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.arismrd.whyroms.R;
+import com.arismrd.whyroms.adapter.RomsAdapter;
 import com.arismrd.whyroms.adapter.TutorialsAdapter;
+import com.arismrd.whyroms.model.ModelRoms;
 import com.arismrd.whyroms.model.ModelTutorials;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.List;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Nama : Ari Sumardi
@@ -27,12 +34,16 @@ import java.util.List;
  * UpdateCoding : -
  *
  * */
-public class TutorialActivity extends BaseActivity {
+public class TutorialActivity extends BaseActivity implements TutorialsAdapter.OnItemClickListener {
 
-    public static final String TAG = "TAG";
-    RecyclerView videoList;
-    TutorialsAdapter adapter;
-    List<ModelTutorials> all_videos;
+    public static final String EXTRA_TITLE = "titleTutor";
+    public static final String EXTRA_FOTO = "thumbTutor";
+    public static final String EXTRA_LINK = "sourceTutor";
+
+    private RecyclerView mRecyclerView;
+    private TutorialsAdapter mTutorAdapter;
+    private ArrayList<ModelTutorials> mTutorList;
+    private RequestQueue mRequestQueue;
 
     @Override
     public int getContentViewId() {
@@ -47,52 +58,63 @@ public class TutorialActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        all_videos = new ArrayList<>();
-        videoList = findViewById(R.id.videoList);
-        videoList.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new TutorialsAdapter(this,all_videos);
-        videoList.setAdapter(adapter);
+        mRecyclerView = findViewById(R.id.rvListTutors);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mTutorList = new ArrayList<>();
+        mRequestQueue = Volley.newRequestQueue(this);
+        parseJson();
 
-        getTutorialData();
     }
 
-    private void getTutorialData() {
-        String URL = "https://raw.githubusercontent.com/bikashthapa01/myvideos-android-app/master/data.json";
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, URL, null, response -> {
-            Log.d(TAG, "onResponse: "+ response);
-            try {
-                JSONArray categories = response.getJSONArray("categories");
-                JSONObject categoriesData = categories.getJSONObject(0);
-                JSONArray videos = categoriesData.getJSONArray("videos");
+    private void parseJson(){
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Mohon tunggu...");
+        progressDialog.show();
 
-                Log.d(TAG, "onResponse: "+ videos);
+        String url = "https://whyroms.000webhostapp.com/tutorials";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                response -> {
+                    String tTitle, tThumbnail, tSource;
 
-                for (int i = 0; i< videos.length();i++){
-                    JSONObject video = videos.getJSONObject(i);
+                    try {
+                        JSONArray jsonArray = response.getJSONArray("tutorials");
 
-                    ModelTutorials v = new ModelTutorials();
+                        for (int i = 0; i < jsonArray.length(); i++){
+                            JSONObject hit = jsonArray.getJSONObject(i);
 
-                    v.setTitle(video.getString("title"));
-                    v.setDescription(video.getString("description"));
-                    v.setAuthor(video.getString("subtitle"));
-                    v.setImageUrl(video.getString("thumb"));
-                    JSONArray videoUrl = video.getJSONArray("sources");
-                    v.setVideoUrl(videoUrl.getString(0));
-
-                    all_videos.add(v);
-                    adapter.notifyDataSetChanged();
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-
-        }, error -> Log.d(TAG, "onErrorResponse: " + error.getMessage()));
-
-        requestQueue.add(objectRequest);
+                            tTitle = hit.getString("judul_tutorial");
+                            tThumbnail = hit.getString("thumbnail_tutorial");
+                            tSource = hit.getString("url_tutorial");
+                            mTutorList.add(new ModelTutorials
+                                    (
+                                            tTitle, tThumbnail,tSource
+                                    )
+                            );
+                        }
+                        mTutorAdapter = new TutorialsAdapter(TutorialActivity.this, mTutorList);
+                        mRecyclerView.setAdapter(mTutorAdapter);
+                        mTutorAdapter.notifyDataSetChanged();
+                        mTutorAdapter.setOnItemClickListener(TutorialActivity.this);
+                        progressDialog.dismiss();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }, error -> {
+            error.printStackTrace();
+            progressDialog.dismiss();
+        }){
+        };
+        mRequestQueue.add(request);
     }
 
-
+    @Override
+    public void onItemClick(int position) {
+        Intent detailIntent = new Intent(this, DetailRomActivity.class);
+        ModelTutorials clickedItem = mTutorList.get(position);
+        detailIntent.putExtra(EXTRA_TITLE, clickedItem.getmTitle());
+        detailIntent.putExtra(EXTRA_FOTO, clickedItem.getmThumbnail());
+        detailIntent.putExtra(EXTRA_LINK, clickedItem.getmSource());
+        startActivity(detailIntent);
+    }
 }

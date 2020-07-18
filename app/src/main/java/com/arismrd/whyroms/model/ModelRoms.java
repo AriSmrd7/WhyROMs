@@ -65,14 +65,6 @@ public class ModelRoms {
         this.mDescRom = mDescRom;
     }
 
-
-    public String getmReviewRom() {
-        return mReviewRom;
-    }
-
-    public void setmReviewRom(String mReviewRom) { this.mReviewRom = mReviewRom; }
-
-
     public String getmWebRom() {
         return mWebRom;
     }

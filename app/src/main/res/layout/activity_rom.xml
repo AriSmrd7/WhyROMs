@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/bgui"
-    tools:context="com.arismrd.whyroms.ui.DeviceActivity"
+    tools:context="com.arismrd.whyroms.ui.RomActivity"
     >
     <FrameLayout
         android:layout_width="match_parent"

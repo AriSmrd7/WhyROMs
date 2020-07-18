@@ -50,15 +50,13 @@ public class PlayTutorialActivity extends AppCompatActivity {
         ModelTutorials v = (ModelTutorials) data.getSerializable("videoData");
 
         assert v != null;
-        getSupportActionBar().setTitle(v.getTitle());
+        getSupportActionBar().setTitle(v.getmTitle());
 
         TextView title = findViewById(R.id.videoTitle);
-        TextView desc = findViewById(R.id.videoDesc);
         videoPlayer = findViewById(R.id.videoView);
 
-        title.setText(v.getTitle());
-        desc.setText(v.getDescription());
-        Uri videoUrl = Uri.parse(v.getVideoUrl());
+        title.setText(v.getmTitle());
+        Uri videoUrl = Uri.parse(v.getmSource());
         videoPlayer.setVideoURI(videoUrl);
         MediaController mc = new MediaController(this);
         videoPlayer.setMediaController(mc);
