@@ -1,5 +1,7 @@
 package com.arismrd.whyroms.model;
 
+import java.io.Serializable;
+
 /**
  /**
  * Nama : Ari Sumardi
@@ -8,36 +10,36 @@ package com.arismrd.whyroms.model;
  *
  * */
 
-public class ModelTutorials {
-    private String mTitle;
-    private String mSource;
+public class ModelTutorials implements Serializable {
+    private String mJudul;
+    private String mUrl;
     private String mThumbnail;
 
 
     public ModelTutorials(
-            String title, String source, String thumbnail
+            String judul_tutorial, String thumbnail_tutorial, String url_tutorial
     )
     {
-        mTitle = title;
-        mSource = source;
-        mThumbnail = thumbnail;
+        mJudul = judul_tutorial;
+        mUrl = url_tutorial;
+        mThumbnail = thumbnail_tutorial;
     }
 
-    public String getmTitle() {
-        return mTitle;
+    public String getmJudul() {
+        return mJudul;
     }
 
-    public void setmTitle(String mTitle) {
-        this.mTitle = mTitle;
+    public void setmJudul(String mJudul) {
+        this.mJudul = mJudul;
     }
 
 
-    public String getmSource() {
-        return mSource;
+    public String getmUrl() {
+        return mUrl;
     }
 
-    public void setmSource(String mSource) {
-        this.mSource = mSource;
+    public void setmSource(String mUrl) {
+        this.mUrl = mUrl;
     }
 
 

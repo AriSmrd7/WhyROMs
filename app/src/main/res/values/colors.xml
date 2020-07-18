@@ -6,11 +6,7 @@
 
     <color name="grey">#808080</color>
     <color name="text_gray">#909999</color>
-    <color name="black">#000000</color>
     <color name="white">#ffffff</color>
-    <color name="red">#FF0A1B</color>
-    <color name="bluenations">#74B9FF</color>
-    <color name="hotpink">#DA37B7</color>
 
     <color name="card_start">#00FFFF</color>
     <color name="card_end">#007FFF</color>
@@ -25,5 +21,6 @@
     <color name="title_code_model">#CACAC7</color>
     <color name="icon_silver">#B2B2B2</color>
     <color name="steelblue">#1189C5</color>
-    <color name="dodgerblue">#4480EA</color>
+
+    <color name="dodgerblue">#007FFF</color>
 </resources>

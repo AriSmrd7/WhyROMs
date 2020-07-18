@@ -42,15 +42,57 @@
                     android:layout_marginTop="5dp">
 
                     <TextView
+                        android:id="@+id/titleApp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
+                        android:layout_alignParentStart="true"
                         android:layout_marginStart="15dp"
                         android:text="@string/title_app"
                         android:fontFamily="@font/gilroybold"
                         android:textColor="@color/white"
                         android:textSize="24sp"
                         android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@+id/titleApp"
+                        android:orientation="vertical"
+                        android:gravity="right"
+                        tools:ignore="RtlHardcoded">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/DeviceName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/gilroyregular"
+                                android:text="@string/your_device_name"
+                                android:textColor="@color/dodgerblue"
+                                android:textSize="@dimen/device"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="2dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/CodeName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/your_code_name"
+                                android:fontFamily="@font/gilroyregular"
+                                android:textColor="@color/dodgerblue"
+                                android:textSize="@dimen/device"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
 
                 </RelativeLayout>
 

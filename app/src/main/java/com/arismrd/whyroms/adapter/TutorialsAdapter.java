@@ -1,17 +1,20 @@
 package com.arismrd.whyroms.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.arismrd.whyroms.model.ModelRoms;
 import com.arismrd.whyroms.R;
 import com.arismrd.whyroms.model.ModelTutorials;
+import com.arismrd.whyroms.ui.PlayTutorialActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -26,20 +29,11 @@ import java.util.ArrayList;
 public class TutorialsAdapter extends RecyclerView.Adapter<TutorialsAdapter.TutorialViewHolder> {
 
     private Context mContext;
-    private ArrayList<ModelTutorials> mTutorList;
-    private OnItemClickListener mListener;
+    private ArrayList<ModelTutorials> mTutorialList;
 
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener){
-        mListener = listener;
-    }
-
-    public TutorialsAdapter(Context context, ArrayList<ModelTutorials> tutorList){
+    public TutorialsAdapter(Context context, ArrayList<ModelTutorials> tutorialList){
         mContext = context;
-        mTutorList = tutorList;
+        mTutorialList = tutorialList;
     }
 
     @NonNull
@@ -53,39 +47,40 @@ public class TutorialsAdapter extends RecyclerView.Adapter<TutorialsAdapter.Tuto
 
     @Override
     public void onBindViewHolder(@NonNull TutorialViewHolder holder, int position) {
-        ModelTutorials currentItem = mTutorList.get(position);
-        String titleName = currentItem.getmTitle();
+        ModelTutorials currentItem = mTutorialList.get(position);
+        String titleName = currentItem.getmJudul();
         String imageUrl = currentItem.getmThumbnail();
 
         holder.mTextViewTitle.setText(titleName);
         Picasso.with(mContext).load(imageUrl).into(holder.mImageView);
-        Picasso.with(mContext).setLoggingEnabled(true);
+
+        holder.vv.setOnClickListener(v -> {
+            Bundle b = new Bundle();
+            b.putSerializable("videoData",mTutorialList.get(position));
+            Intent i = new Intent(mContext,PlayTutorialActivity.class);
+            i.putExtras(b);
+            v.getContext().startActivity(i);
+        });
+
     }
 
     @Override
     public int getItemCount() {
-        return mTutorList.size();
+        return mTutorialList.size();
     }
 
-    public class  TutorialViewHolder extends RecyclerView.ViewHolder{
+    public static class  TutorialViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView mImageView;
         public TextView mTextViewTitle;
+        View vv;
 
         public TutorialViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mTextViewTitle = itemView.findViewById(R.id.videoTitle);
             mImageView = itemView.findViewById(R.id.videoThumbnail);
-            itemView.setOnClickListener(v -> {
-                if (mListener != null){
-                    int position = getAdapterPosition();
-
-                    if (position != RecyclerView.NO_POSITION){
-                        mListener.onItemClick(position);
-                    }
-                }
-            });
+            vv = itemView;
 
         }
     }

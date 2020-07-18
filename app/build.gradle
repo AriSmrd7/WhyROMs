@@ -41,4 +41,5 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
     implementation 'com.synnapps:carouselview:0.1.4'
+    implementation 'com.jaredrummler:android-device-names:2.0.0'
 }

@@ -8,8 +8,6 @@
     <string name="img_description_rom">Image</string>
 
 
-    <string name="base_api_roms">https://whyroms.000webhostapp.com/roms</string>
-
     <string name="title_nav_home">For You</string>
     <string name="title_nav_phone">Device</string>
     <string name="title_nav_tutorial">Tutorial</string>
@@ -21,7 +19,6 @@
     <string name="detail_nama">Nama ROM</string>
     <string name="detail_dev">Developer :</string>
     <string name="detail_desc">About ROM :</string>
-    <string name="detail_rev">Fitur Menarik :</string>
     <string name="detail_web">Official Website :</string>
     <string name="detail_link">Link Download :</string>
 
@@ -35,7 +32,6 @@
     <string name="page_tutorial">Tutorial</string>
     <string name="page_rom">Custom ROM</string>
 
-    <string name="magisk_version">Magisk V XX.X</string>
     <string name="magisk_status">Stable</string>
     <string name="magisk_download">Download Magisk</string>
 
@@ -43,9 +39,8 @@
     <string name="download_rom"><b>Download</b></string>
 
     <string name="judul_video">Judul Video</string>
-    <string name="deskripsi_video">Deskripsi Video</string>
-    <string name="view_video">0 View</string>
-    <string name="author_video">Author</string>
-    <string name="tanggal_video">0 hari yang lalu.</string>
+
+    <string name="your_device_name">Your Device Name </string>
+    <string name="your_code_name">Your Code Name</string>
 
 </resources>

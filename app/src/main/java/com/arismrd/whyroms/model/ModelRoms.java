@@ -23,7 +23,6 @@ public class ModelRoms {
                      String deskripsi_roms, String review_roms, String web_roms, String url_roms
     )
     {
-    //public ModelRoms(String nama, String deskripsi){
         mNamaRom = nama_roms;
         mLogoRom = logo_roms;
         mDevRom = developer_roms;

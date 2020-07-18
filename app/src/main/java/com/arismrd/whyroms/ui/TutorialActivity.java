@@ -1,8 +1,11 @@
 package com.arismrd.whyroms.ui;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Cache;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -14,19 +17,15 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.arismrd.whyroms.R;
-import com.arismrd.whyroms.adapter.RomsAdapter;
 import com.arismrd.whyroms.adapter.TutorialsAdapter;
-import com.arismrd.whyroms.model.ModelRoms;
 import com.arismrd.whyroms.model.ModelTutorials;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Nama : Ari Sumardi
@@ -34,15 +33,11 @@ import androidx.recyclerview.widget.RecyclerView;
  * UpdateCoding : -
  *
  * */
-public class TutorialActivity extends BaseActivity implements TutorialsAdapter.OnItemClickListener {
-
-    public static final String EXTRA_TITLE = "titleTutor";
-    public static final String EXTRA_FOTO = "thumbTutor";
-    public static final String EXTRA_LINK = "sourceTutor";
+public class TutorialActivity extends BaseActivity{
 
     private RecyclerView mRecyclerView;
-    private TutorialsAdapter mTutorAdapter;
-    private ArrayList<ModelTutorials> mTutorList;
+    private TutorialsAdapter mTutorialAdapter;
+    private ArrayList<ModelTutorials> mTutorialList;
     private RequestQueue mRequestQueue;
 
     @Override
@@ -61,21 +56,21 @@ public class TutorialActivity extends BaseActivity implements TutorialsAdapter.O
         mRecyclerView = findViewById(R.id.rvListTutors);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mTutorList = new ArrayList<>();
+        mTutorialList = new ArrayList<>();
         mRequestQueue = Volley.newRequestQueue(this);
-        parseJson();
+        getTutorials();
 
     }
 
-    private void parseJson(){
+    private void getTutorials(){
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Mohon tunggu...");
+        progressDialog.setMessage("Memuat video, tunggu sebentar...");
         progressDialog.show();
 
         String url = "https://whyroms.000webhostapp.com/tutorials";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
-                    String tTitle, tThumbnail, tSource;
+                    String titleNama, tThumb, tUrl;
 
                     try {
                         JSONArray jsonArray = response.getJSONArray("tutorials");
@@ -83,19 +78,18 @@ public class TutorialActivity extends BaseActivity implements TutorialsAdapter.O
                         for (int i = 0; i < jsonArray.length(); i++){
                             JSONObject hit = jsonArray.getJSONObject(i);
 
-                            tTitle = hit.getString("judul_tutorial");
-                            tThumbnail = hit.getString("thumbnail_tutorial");
-                            tSource = hit.getString("url_tutorial");
-                            mTutorList.add(new ModelTutorials
+                            titleNama = hit.getString("judul_tutorial");
+                            tThumb = hit.getString("thumbnail_tutorial");
+                            tUrl = hit.getString("url_tutorial");
+                            mTutorialList.add(new ModelTutorials
                                     (
-                                            tTitle, tThumbnail,tSource
+                                            titleNama, tThumb,tUrl
                                     )
                             );
                         }
-                        mTutorAdapter = new TutorialsAdapter(TutorialActivity.this, mTutorList);
-                        mRecyclerView.setAdapter(mTutorAdapter);
-                        mTutorAdapter.notifyDataSetChanged();
-                        mTutorAdapter.setOnItemClickListener(TutorialActivity.this);
+                        mTutorialAdapter = new TutorialsAdapter(TutorialActivity.this, mTutorialList);
+                        mRecyclerView.setAdapter(mTutorialAdapter);
+                        mTutorialAdapter.notifyDataSetChanged();
                         progressDialog.dismiss();
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -104,17 +98,53 @@ public class TutorialActivity extends BaseActivity implements TutorialsAdapter.O
             error.printStackTrace();
             progressDialog.dismiss();
         }){
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
+                try {
+                    Cache.Entry cacheEntry = HttpHeaderParser.parseCacheHeaders(response);
+                    if (cacheEntry == null) {
+                        cacheEntry = new Cache.Entry();
+                    }
+                    final long cacheHitButRefreshed = 3 * 60 * 1000; // in 3 minutes cache will be hit, but also refreshed on background
+                    final long cacheExpired = 1 * 60 * 1000; // in 1 minutes this cache entry expires completely
+                    long now = System.currentTimeMillis();
+                    final long softExpire = now + cacheHitButRefreshed;
+                    final long ttl = now + cacheExpired;
+                    cacheEntry.data = response.data;
+                    cacheEntry.softTtl = softExpire;
+                    cacheEntry.ttl = ttl;
+                    String headerValue;
+                    headerValue = response.headers.get("Date");
+                    if (headerValue != null) {
+                        cacheEntry.serverDate = HttpHeaderParser.parseDateAsEpoch(headerValue);
+                    }
+                    headerValue = response.headers.get("Last-Modified");
+                    if (headerValue != null) {
+                        cacheEntry.lastModified = HttpHeaderParser.parseDateAsEpoch(headerValue);
+                    }
+                    cacheEntry.responseHeaders = response.headers;
+                    final String jsonString = new String(response.data,
+                            HttpHeaderParser.parseCharset(response.headers));
+                    return Response.success(new JSONObject(jsonString), cacheEntry);
+                } catch (UnsupportedEncodingException | JSONException e) {
+                    return Response.error(new ParseError(e));
+                }
+            }
+            @Override
+            protected void deliverResponse(JSONObject response) {
+                super.deliverResponse(response);
+            }
+
+            @Override
+            public void deliverError(VolleyError error) {
+                super.deliverError(error);
+            }
+
+            @Override
+            protected VolleyError parseNetworkError(VolleyError volleyError) {
+                return super.parseNetworkError(volleyError);
+            }
         };
         mRequestQueue.add(request);
-    }
-
-    @Override
-    public void onItemClick(int position) {
-        Intent detailIntent = new Intent(this, DetailRomActivity.class);
-        ModelTutorials clickedItem = mTutorList.get(position);
-        detailIntent.putExtra(EXTRA_TITLE, clickedItem.getmTitle());
-        detailIntent.putExtra(EXTRA_FOTO, clickedItem.getmThumbnail());
-        detailIntent.putExtra(EXTRA_LINK, clickedItem.getmSource());
-        startActivity(detailIntent);
     }
 }

@@ -28,7 +28,6 @@ import java.util.Objects;
 
 public class PlayTutorialActivity extends AppCompatActivity {
 
-    public static final String TAG = "TAG";
     ProgressBar spiiner;
     ImageView fullScreenOp;
     FrameLayout frameLayout;
@@ -39,7 +38,7 @@ public class PlayTutorialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_tutorials);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        
+
         spiiner = findViewById(R.id.progressBar);
         fullScreenOp = findViewById(R.id.fullScreenOp);
         frameLayout = findViewById(R.id.frameLayout);
@@ -50,13 +49,13 @@ public class PlayTutorialActivity extends AppCompatActivity {
         ModelTutorials v = (ModelTutorials) data.getSerializable("videoData");
 
         assert v != null;
-        getSupportActionBar().setTitle(v.getmTitle());
+        getSupportActionBar().setTitle(v.getmJudul());
 
         TextView title = findViewById(R.id.videoTitle);
         videoPlayer = findViewById(R.id.videoView);
 
-        title.setText(v.getmTitle());
-        Uri videoUrl = Uri.parse(v.getmSource());
+        title.setText(v.getmJudul());
+        Uri videoUrl = Uri.parse(v.getmUrl());
         videoPlayer.setVideoURI(videoUrl);
         MediaController mc = new MediaController(this);
         videoPlayer.setMediaController(mc);
@@ -65,7 +64,7 @@ public class PlayTutorialActivity extends AppCompatActivity {
             videoPlayer.start();
             spiiner.setVisibility(View.GONE);
         });
-        
+
         fullScreenOp.setOnClickListener(v1 -> {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -96,7 +95,7 @@ public class PlayTutorialActivity extends AppCompatActivity {
         frameLayout.setLayoutParams(new ConstraintLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,heightValue)));
         videoPlayer.setLayoutParams(new FrameLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,heightValue)));
         int orientation = getResources().getConfiguration().orientation;
-        
+
         if(orientation == Configuration.ORIENTATION_PORTRAIT){
             super.onBackPressed();
         }

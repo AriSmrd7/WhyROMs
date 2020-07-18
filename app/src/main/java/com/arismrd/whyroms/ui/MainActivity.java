@@ -2,6 +2,11 @@ package com.arismrd.whyroms.ui;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.widget.TextView;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Cache;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -15,16 +20,16 @@ import com.android.volley.toolbox.Volley;
 import com.arismrd.whyroms.R;
 import com.arismrd.whyroms.adapter.AddonsAdapter;
 import com.arismrd.whyroms.model.ModelAddons;
+import com.jaredrummler.android.device.DeviceName;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Nama : Ari Sumardi
@@ -41,7 +46,6 @@ public class MainActivity extends BaseActivity {
     private AddonsAdapter mAddonsAdapter;
     private ArrayList<ModelAddons> mMagiskList;
     private RequestQueue mRequestQueue;
-
     CarouselView carouselView;
 
 
@@ -70,6 +74,17 @@ public class MainActivity extends BaseActivity {
         mMagiskList = new ArrayList<>();
         mRequestQueue = Volley.newRequestQueue(this);
         getMagiskData();
+
+        //device info
+        DeviceName.with(this).request((info, error) -> {
+             String Dname = info.getName();
+             String Dcode   = info.model;
+
+             final TextView devicename = findViewById(R.id.DeviceName);
+             devicename.setText(Dname);
+             final TextView devicecode = findViewById(R.id.CodeName);
+             devicecode.setText(Dcode);
+        });
 
         //slider
         carouselView = findViewById(R.id.carouselView);
