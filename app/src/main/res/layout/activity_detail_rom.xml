@@ -32,8 +32,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="9dp"
                     android:scaleType="centerCrop"
-                    android:padding="5dp"
-                    android:src="@mipmap/ic_launcher" />
+                    android:padding="5dp"/>
 
                 <TextView
                     android:id="@+id/txtNama"

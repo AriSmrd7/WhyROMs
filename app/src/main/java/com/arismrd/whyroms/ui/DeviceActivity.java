@@ -3,7 +3,6 @@ package com.arismrd.whyroms.ui;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 import com.arismrd.whyroms.R;
 import com.arismrd.whyroms.adapter.DevicesAdapter;
 import com.arismrd.whyroms.model.ModelDevices;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

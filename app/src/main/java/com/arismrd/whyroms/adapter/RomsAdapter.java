@@ -6,11 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.arismrd.whyroms.model.ModelRoms;
 import com.arismrd.whyroms.R;
+import com.arismrd.whyroms.model.ModelRoms;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

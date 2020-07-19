@@ -2,11 +2,9 @@ package com.arismrd.whyroms.ui;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
-import com.arismrd.whyroms.R;
 
-import java.util.Objects;
+import com.arismrd.whyroms.R;
 
 /**
  * Nama : Ari Sumardi

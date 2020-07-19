@@ -33,7 +33,6 @@
                     android:layout_height="20dp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/logowr"
                     android:contentDescription="@string/img_description_device" />
 
                 <RelativeLayout

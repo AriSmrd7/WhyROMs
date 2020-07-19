@@ -7,8 +7,8 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.arismrd.whyroms.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
  * Nama : Ari Sumardi

@@ -3,6 +3,10 @@ package com.arismrd.whyroms.ui;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Cache;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -20,10 +24,9 @@ import com.arismrd.whyroms.model.ModelRoms;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Nama : Ari Sumardi
