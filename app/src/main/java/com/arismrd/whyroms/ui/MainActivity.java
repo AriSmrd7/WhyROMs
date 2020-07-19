@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.arismrd.whyroms.R;
 import com.arismrd.whyroms.adapter.AddonsAdapter;
 import com.arismrd.whyroms.model.ModelAddons;
+import com.arismrd.whyroms.utils.PrefHelper;
 import com.jaredrummler.android.device.DeviceName;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
@@ -34,13 +35,12 @@ import java.util.ArrayList;
 /**
  * Nama : Ari Sumardi
  * NIM  : 10117162
- * UpdateCoding : 22 Juni 2020, 21.00 - 01.28 WIB
+ * UpdateCoding : 19 Juli 2020, 19.00 - 22.00 WIB
  *
  * */
 public class MainActivity extends BaseActivity {
 
-    //public static final String EXTRA_LINK = "tLink";
-
+    private  PrefHelper prefManager = null;
 
     private RecyclerView mRecyclerView;
     private AddonsAdapter mAddonsAdapter;
@@ -68,6 +68,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        prefManager = new PrefHelper(this);
+
         mRecyclerView = findViewById(R.id.rvListMagisk);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));

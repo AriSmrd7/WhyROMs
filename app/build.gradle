@@ -42,4 +42,6 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.1'
     implementation 'com.synnapps:carouselview:0.1.4'
     implementation 'com.jaredrummler:android-device-names:2.0.0'
+    implementation 'com.github.Shashank02051997:FancyWalkthrough-Android:2.1'
+
 }
