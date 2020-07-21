@@ -17,10 +17,9 @@
     <string name="name_rom">Nama ROM</string>
 
     <string name="detail_nama">Nama ROM</string>
-    <string name="detail_dev">Developer :</string>
+    <string name="detail_dev">Lead Developer :</string>
     <string name="detail_desc">About ROM :</string>
     <string name="detail_web">Official Website :</string>
-    <string name="detail_link">Link Download :</string>
 
     <string name="thanks"><b>Hi Oprekers</b>, Thanks for use my stuff. \nChoose and Download Custom ROM according to your needs.</string>
 
@@ -40,7 +39,17 @@
 
     <string name="judul_video">Judul Video</string>
 
-    <string name="your_device_name">Your Device Name </string>
+    <string name="your_device_name">Your Device : </string>
     <string name="your_code_name">Your Code Name</string>
+
+    <string name="whatwhyroms">Apa itu WhyROMs?</string>
+    <string name="itswhyroms">WhyROMs adalah aplikasi yang dapat memudahkan untuk mencari Custom ROM ponsel Xiaomi yang dapat diunduh langsung, selain itu kamu juga dapat melihat codename ponsel yang kamu miliki.</string>
+    <string name="itswhyroms2">Pada aplikasi ini juga tersedia juga beberapa bahan lainnya seperti Custom Recovery, Magisk, GApps dan yang lainnya.</string>
+    <string name="itswhyroms3">Nikmati semua konten yang akan selalu di update setiap minggunya. </string>
+
+    <string name="thanksto">Big Thanks To : </string>
+    <string name="thanksrom">AEX, AOSiP, AncientOS, Bliss, Havoc OS, Bootleggers, CarbonROM, Corvus OS, EvoX, iON OS, LineageOS, MSM-Extended, RevengeOS, SuperiorOS, ZenX OS, Pixel Experience, And All Custom ROMs</string>
+    <string name="thankstester">Also thanks to my friends as beta tester this app :</string>
+    <string name="nametester">DenyMary \n IatBee \n AdiSadBoy \n DandiPutraS</string>
 
 </resources>

@@ -3,12 +3,11 @@ package com.arismrd.whyroms.model;
 import java.io.Serializable;
 
 /**
- /**
+ * /**
  * Nama : Ari Sumardi
  * NIM  : 10117162
  * Coding : 10 Juni 2020, 21.00 - 01.28 WIB
- *
- * */
+ */
 
 public class ModelTutorials implements Serializable {
     private String mJudul;
@@ -18,8 +17,7 @@ public class ModelTutorials implements Serializable {
 
     public ModelTutorials(
             String judul_tutorial, String thumbnail_tutorial, String url_tutorial
-    )
-    {
+    ) {
         mJudul = judul_tutorial;
         mUrl = url_tutorial;
         mThumbnail = thumbnail_tutorial;

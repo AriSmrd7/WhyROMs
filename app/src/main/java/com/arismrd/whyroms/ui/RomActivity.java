@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Cache;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
@@ -32,8 +33,7 @@ import java.util.ArrayList;
  * Nama : Ari Sumardi
  * NIM  : 10117162
  * UpdateCoding : -
- *
- * */
+ */
 public class RomActivity extends BaseActivity implements RomsAdapter.OnItemClickListener {
 
     public static final String EXTRA_TITLE = "namaROM";
@@ -60,14 +60,14 @@ public class RomActivity extends BaseActivity implements RomsAdapter.OnItemClick
         super.onCreate(savedInstanceState);
         mRecyclerView = findViewById(R.id.rvListRoms);
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mRomList = new ArrayList<>();
         mRequestQueue = Volley.newRequestQueue(this);
         parseJson();
 
     }
 
-    private void parseJson(){
+    private void parseJson() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Mohon tunggu...");
         progressDialog.show();
@@ -81,7 +81,7 @@ public class RomActivity extends BaseActivity implements RomsAdapter.OnItemClick
                     try {
                         JSONArray jsonArray = response.getJSONArray("data");
 
-                        for (int i = 0; i < jsonArray.length(); i++){
+                        for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject hit = jsonArray.getJSONObject(i);
 
                             titleNama = hit.getString("nama_roms");
@@ -93,7 +93,7 @@ public class RomActivity extends BaseActivity implements RomsAdapter.OnItemClick
                             tUrl = hit.getString("url_roms");
                             mRomList.add(new ModelRoms
                                     (
-                                            titleNama, tLogo,tDev, tDesc, tRev,tWeb,tUrl
+                                            titleNama, tLogo, tDev, tDesc, tRev, tWeb, tUrl
                                     )
                             );
                         }
@@ -108,7 +108,7 @@ public class RomActivity extends BaseActivity implements RomsAdapter.OnItemClick
                 }, error -> {
             error.printStackTrace();
             progressDialog.dismiss();
-        }){
+        }) {
             @Override
             protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
                 try {
@@ -116,7 +116,8 @@ public class RomActivity extends BaseActivity implements RomsAdapter.OnItemClick
                     if (cacheEntry == null) {
                         cacheEntry = new Cache.Entry();
                     }
-                    final long cacheHitButRefreshed = 3 * 60 * 1000; // in 3 minutes cache will be hit, but also refreshed on background
+
+                    final long cacheHitButRefreshed = 10 * 60 * 1000; // in 3 minutes cache will be hit, but also refreshed on background
                     final long cacheExpired = 24 * 60 * 60 * 1000; // in 24 hours this cache entry expires completely
                     long now = System.currentTimeMillis();
                     final long softExpire = now + cacheHitButRefreshed;
@@ -141,6 +142,7 @@ public class RomActivity extends BaseActivity implements RomsAdapter.OnItemClick
                     return Response.error(new ParseError(e));
                 }
             }
+
             @Override
             protected void deliverResponse(JSONObject response) {
                 super.deliverResponse(response);
@@ -156,6 +158,8 @@ public class RomActivity extends BaseActivity implements RomsAdapter.OnItemClick
                 return super.parseNetworkError(volleyError);
             }
         };
+        DefaultRetryPolicy  retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        request.setRetryPolicy(retryPolicy);
         mRequestQueue.add(request);
     }
 
@@ -168,4 +172,5 @@ public class RomActivity extends BaseActivity implements RomsAdapter.OnItemClick
         detailIntent.putExtra(EXTRA_LINK, clickedItem.getmUrlRom());
         startActivity(detailIntent);
     }
+
 }

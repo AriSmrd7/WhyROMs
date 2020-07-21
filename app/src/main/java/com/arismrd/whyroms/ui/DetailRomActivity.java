@@ -27,15 +27,13 @@ import static com.arismrd.whyroms.ui.RomActivity.EXTRA_TITLE;
  * Nama : Ari Sumardi
  * NIM  : 10117162
  * Coding : 23 Juni 2020, 21.00 - 01.28 WIB
- *
- * */
+ */
 
 public class DetailRomActivity extends AppCompatActivity {
 
     private TextView mTextViewDev;
     private TextView mTextViewDesc;
     private TextView mTextViewWeb;
-    private TextView mTextViewUrl;
 
 
     private RequestQueue mRequestQueue;
@@ -47,6 +45,7 @@ public class DetailRomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_rom);
+
 
         Intent intent = getIntent();
         namaROM = intent.getStringExtra(EXTRA_TITLE);
@@ -68,7 +67,6 @@ public class DetailRomActivity extends AppCompatActivity {
         mTextViewDev = findViewById(R.id.txtIsiDev);
         mTextViewDesc = findViewById(R.id.txtIsiDesc);
         mTextViewWeb = findViewById(R.id.txtIsiWeb);
-        mTextViewUrl = findViewById(R.id.txtIsiUrl);
 
         mRequestQueue = Volley.newRequestQueue(this);
         getDetailROM();
@@ -82,8 +80,8 @@ public class DetailRomActivity extends AppCompatActivity {
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
-                    String nama, tDev , tDesc,
-                           tWeb, tUrl, fotos;
+                    String nama, tDev, tDesc,
+                            tWeb, fotos;
                     try {
                         JSONArray jsonArray = response.getJSONArray("data");
                         for (int i = 0; i < jsonArray.length(); i++) {
@@ -92,14 +90,12 @@ public class DetailRomActivity extends AppCompatActivity {
                             tDev = hit.getString("developer_roms");
                             tDesc = hit.getString("deskripsi_roms");
                             tWeb = hit.getString("web_roms");
-                            tUrl = hit.getString("url_roms");
                             fotos = hit.getString("logo_roms");
 
                             if (namaROM.equals(nama) && logoROM.equals(fotos)) {
                                 mTextViewDev.append(tDev);
                                 mTextViewDesc.append(tDesc);
                                 mTextViewWeb.append(tWeb);
-                                mTextViewUrl.append(tUrl);
                             }
                         }
                     } catch (JSONException e) {

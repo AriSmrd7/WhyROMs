@@ -1,12 +1,11 @@
 package com.arismrd.whyroms.model;
 
 /**
- /**
+ * /**
  * Nama : Ari Sumardi
  * NIM  : 10117162
  * Coding : 10 Juni 2020, 21.00 - 01.28 WIB
- *
- * */
+ */
 
 public class ModelRoms {
     private String mNamaRom;
@@ -19,10 +18,9 @@ public class ModelRoms {
 
 
     public ModelRoms(
-                     String nama_roms, String logo_roms, String developer_roms,
-                     String deskripsi_roms, String review_roms, String web_roms, String url_roms
-    )
-    {
+            String nama_roms, String logo_roms, String developer_roms,
+            String deskripsi_roms, String review_roms, String web_roms, String url_roms
+    ) {
         mNamaRom = nama_roms;
         mLogoRom = logo_roms;
         mDevRom = developer_roms;
@@ -58,7 +56,9 @@ public class ModelRoms {
         this.mDevRom = mDevRom;
     }
 
-    public String getmDescRom() { return mDescRom; }
+    public String getmDescRom() {
+        return mDescRom;
+    }
 
     public void setmDescRom(String mDescRom) {
         this.mDescRom = mDescRom;

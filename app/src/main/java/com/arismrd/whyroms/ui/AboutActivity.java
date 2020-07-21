@@ -10,11 +10,8 @@ import com.arismrd.whyroms.R;
  * Nama : Ari Sumardi
  * NIM  : 10117162
  * UpdateCoding : -
- *
- * */
+ */
 public class AboutActivity extends BaseActivity {
-
-    Toolbar toolbar;
 
     @Override
     public int getContentViewId() {
@@ -27,10 +24,12 @@ public class AboutActivity extends BaseActivity {
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
     }
 }

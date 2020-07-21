@@ -72,7 +72,7 @@
                                 android:layout_height="match_parent"
                                 android:fontFamily="@font/gilroyregular"
                                 android:text="@string/your_device_name"
-                                android:textColor="@color/dodgerblue"
+                                android:textColor="@color/white"
                                 android:textSize="@dimen/device"
                                 android:textStyle="bold"
                                 android:layout_marginBottom="2dp"/>

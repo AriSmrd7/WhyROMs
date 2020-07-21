@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Cache;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
@@ -31,9 +32,8 @@ import java.util.ArrayList;
  * Nama : Ari Sumardi
  * NIM  : 10117162
  * UpdateCoding : -
- *
- * */
-public class TutorialActivity extends BaseActivity{
+ */
+public class TutorialActivity extends BaseActivity {
 
     private RecyclerView mRecyclerView;
     private TutorialsAdapter mTutorialAdapter;
@@ -62,7 +62,7 @@ public class TutorialActivity extends BaseActivity{
 
     }
 
-    private void getTutorials(){
+    private void getTutorials() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Memuat video, tunggu sebentar...");
         progressDialog.show();
@@ -75,7 +75,7 @@ public class TutorialActivity extends BaseActivity{
                     try {
                         JSONArray jsonArray = response.getJSONArray("tutorials");
 
-                        for (int i = 0; i < jsonArray.length(); i++){
+                        for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject hit = jsonArray.getJSONObject(i);
 
                             titleNama = hit.getString("judul_tutorial");
@@ -83,7 +83,7 @@ public class TutorialActivity extends BaseActivity{
                             tUrl = hit.getString("url_tutorial");
                             mTutorialList.add(new ModelTutorials
                                     (
-                                            titleNama, tThumb,tUrl
+                                            titleNama, tThumb, tUrl
                                     )
                             );
                         }
@@ -97,7 +97,7 @@ public class TutorialActivity extends BaseActivity{
                 }, error -> {
             error.printStackTrace();
             progressDialog.dismiss();
-        }){
+        }) {
             @Override
             protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
                 try {
@@ -105,8 +105,9 @@ public class TutorialActivity extends BaseActivity{
                     if (cacheEntry == null) {
                         cacheEntry = new Cache.Entry();
                     }
-                    final long cacheHitButRefreshed = 3 * 60 * 1000; // in 3 minutes cache will be hit, but also refreshed on background
-                    final long cacheExpired = 1 * 60 * 1000; // in 1 minutes this cache entry expires completely
+
+                    final long cacheHitButRefreshed = 10 * 60 * 1000; // in 3 minutes cache will be hit, but also refreshed on background
+                    final long cacheExpired = 24 * 60 * 60 * 1000; // in 24 hours this cache entry expires completely
                     long now = System.currentTimeMillis();
                     final long softExpire = now + cacheHitButRefreshed;
                     final long ttl = now + cacheExpired;
@@ -130,6 +131,7 @@ public class TutorialActivity extends BaseActivity{
                     return Response.error(new ParseError(e));
                 }
             }
+
             @Override
             protected void deliverResponse(JSONObject response) {
                 super.deliverResponse(response);
@@ -145,6 +147,8 @@ public class TutorialActivity extends BaseActivity{
                 return super.parseNetworkError(volleyError);
             }
         };
+        DefaultRetryPolicy  retryPolicy = new DefaultRetryPolicy(0, -1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        request.setRetryPolicy(retryPolicy);
         mRequestQueue.add(request);
     }
 }

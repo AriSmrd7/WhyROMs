@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Cache;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
@@ -36,11 +37,10 @@ import java.util.ArrayList;
  * Nama : Ari Sumardi
  * NIM  : 10117162
  * UpdateCoding : 19 Juli 2020, 19.00 - 22.00 WIB
- *
- * */
+ */
 public class MainActivity extends BaseActivity {
 
-    private  PrefHelper prefManager = null;
+    private PrefHelper prefManager = null;
 
     private RecyclerView mRecyclerView;
     private AddonsAdapter mAddonsAdapter;
@@ -73,20 +73,17 @@ public class MainActivity extends BaseActivity {
 
         mRecyclerView = findViewById(R.id.rvListMagisk);
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mMagiskList = new ArrayList<>();
+
         mRequestQueue = Volley.newRequestQueue(this);
         getMagiskData();
 
         //device info
         DeviceName.with(this).request((info, error) -> {
-             String Dname = info.getName();
-             String Dcode   = info.model;
-
-             final TextView devicename = findViewById(R.id.DeviceName);
-             devicename.setText(Dname);
-             final TextView devicecode = findViewById(R.id.CodeName);
-             devicecode.setText(Dcode);
+            String Dcode = info.model;
+            final TextView devicecode = findViewById(R.id.CodeName);
+            devicecode.setText(Dcode);
         });
 
         //slider
@@ -96,10 +93,11 @@ public class MainActivity extends BaseActivity {
         carouselView.setImageListener(imageListener);
 
     }
+
     // To set simple images
     ImageListener imageListener = (position, imageView) -> imageView.setImageResource(sampleImages[position]);
 
-    private void getMagiskData(){
+    private void getMagiskData() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Mohon tunggu...");
         progressDialog.show();
@@ -112,16 +110,16 @@ public class MainActivity extends BaseActivity {
                     try {
                         JSONArray jsonArray = response.getJSONArray("addons");
 
-                        for (int i = 0; i < jsonArray.length(); i++){
+                        for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject hit = jsonArray.getJSONObject(i);
 
-                            tVersi  = hit.getString("versi");
+                            tVersi = hit.getString("versi");
                             tStatus = hit.getString("status");
-                            tImage  = hit.getString("image");
-                            tLink  = hit.getString("link");
+                            tImage = hit.getString("image");
+                            tLink = hit.getString("link");
                             mMagiskList.add(new ModelAddons
                                     (
-                                            tVersi, tStatus,tImage, tLink
+                                            tVersi, tStatus, tImage, tLink
                                     )
                             );
                         }
@@ -133,9 +131,9 @@ public class MainActivity extends BaseActivity {
                         e.printStackTrace();
                     }
                 }, error -> {
-                    error.printStackTrace();
-                    progressDialog.dismiss();
-                }){
+            error.printStackTrace();
+            progressDialog.dismiss();
+        }) {
             @Override
             protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
                 try {
@@ -143,7 +141,8 @@ public class MainActivity extends BaseActivity {
                     if (cacheEntry == null) {
                         cacheEntry = new Cache.Entry();
                     }
-                    final long cacheHitButRefreshed = 3 * 60 * 1000; // in 3 minutes cache will be hit, but also refreshed on background
+
+                    final long cacheHitButRefreshed = 10 * 60 * 1000; // in 3 minutes cache will be hit, but also refreshed on background
                     final long cacheExpired = 24 * 60 * 60 * 1000; // in 24 hours this cache entry expires completely
                     long now = System.currentTimeMillis();
                     final long softExpire = now + cacheHitButRefreshed;
@@ -168,6 +167,7 @@ public class MainActivity extends BaseActivity {
                     return Response.error(new ParseError(e));
                 }
             }
+
             @Override
             protected void deliverResponse(JSONObject response) {
                 super.deliverResponse(response);
@@ -183,7 +183,12 @@ public class MainActivity extends BaseActivity {
                 return super.parseNetworkError(volleyError);
             }
         };
+        DefaultRetryPolicy  retryPolicy = new DefaultRetryPolicy(
+                0,
+                -1,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        );
+        request.setRetryPolicy(retryPolicy);
         mRequestQueue.add(request);
     }
-
 }

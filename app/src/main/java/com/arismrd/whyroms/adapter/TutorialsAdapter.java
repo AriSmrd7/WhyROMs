@@ -23,15 +23,14 @@ import java.util.ArrayList;
  * Nama : Ari Sumardi
  * NIM  : 10117162
  * Coding : 10 Juni 2020, 21.00 - 01.28 WIB
- *
- * */
+ */
 
 public class TutorialsAdapter extends RecyclerView.Adapter<TutorialsAdapter.TutorialViewHolder> {
 
     private Context mContext;
     private ArrayList<ModelTutorials> mTutorialList;
 
-    public TutorialsAdapter(Context context, ArrayList<ModelTutorials> tutorialList){
+    public TutorialsAdapter(Context context, ArrayList<ModelTutorials> tutorialList) {
         mContext = context;
         mTutorialList = tutorialList;
     }
@@ -56,8 +55,8 @@ public class TutorialsAdapter extends RecyclerView.Adapter<TutorialsAdapter.Tuto
 
         holder.vv.setOnClickListener(v -> {
             Bundle b = new Bundle();
-            b.putSerializable("videoData",mTutorialList.get(position));
-            Intent i = new Intent(mContext,PlayTutorialActivity.class);
+            b.putSerializable("videoData", mTutorialList.get(position));
+            Intent i = new Intent(mContext, PlayTutorialActivity.class);
             i.putExtras(b);
             v.getContext().startActivity(i);
         });
@@ -69,7 +68,7 @@ public class TutorialsAdapter extends RecyclerView.Adapter<TutorialsAdapter.Tuto
         return mTutorialList.size();
     }
 
-    public static class  TutorialViewHolder extends RecyclerView.ViewHolder{
+    public static class TutorialViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView mImageView;
         public TextView mTextViewTitle;

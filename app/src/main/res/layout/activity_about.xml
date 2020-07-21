@@ -11,14 +11,14 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="120dp"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="120dp"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
@@ -28,28 +28,15 @@
             <ImageView
                 android:id="@+id/header"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/bg_gradient_rom"
+                android:layout_height="120dp"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
                 android:contentDescription="@string/page_about" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/title_bar_page"
-                android:textColor="@color/mainui"
-                android:layout_marginStart="32dp"
-                android:layout_marginBottom="32dp"
-                android:layout_marginEnd="32dp"
-                app:layout_collapseMode="parallax"
-                android:layout_gravity="bottom"
-                android:text="@string/page_about"
-                android:fontFamily="@font/gilroybold"/>
-
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
+                app:title="@string/page_about"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
@@ -65,22 +52,128 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".ui.AboutActivity">
 
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            app:cardElevation="2dp"
+            app:cardMaxElevation="3dp"
+            app:cardCornerRadius="3dp"
+            app:cardBackgroundColor="@color/bgui">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="26sp"
-                android:layout_margin="20dp"
-                android:gravity="center"
-                android:fontFamily="@font/gilroybold"
-                android:textColor="@color/colorPrimary"
-                android:text="@string/title_nav_about"
-                />
-        </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="25dp"
+                android:paddingLeft="35dp"
+                android:paddingRight="35dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/ic_logo"
+                    android:layout_gravity="center_horizontal"
+                    android:contentDescription="@string/img_description_home" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/steelblue"
+                    android:elegantTextHeight="true"
+                    android:textAlignment="center"
+                    android:textSize="22sp"
+                    android:text="@string/whatwhyroms"
+                    android:fontFamily="@font/gilroybold"
+                    android:textStyle="bold"
+                    android:paddingBottom="3dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elegantTextHeight="true"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:text="@string/itswhyroms"
+                    android:fontFamily="@font/gilroyregular"
+                    android:paddingBottom="3dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:text="@string/itswhyroms2"
+                    android:fontFamily="@font/gilroyregular"
+                    android:paddingBottom="3dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elegantTextHeight="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:text="@string/itswhyroms3"
+                    android:fontFamily="@font/gilroyregular"
+                    android:paddingBottom="3dp"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/steelblue"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:layout_marginTop="25dp"
+                    android:textSize="22sp"
+                    android:text="@string/thanksto"
+                    android:fontFamily="@font/gilroybold"
+                    android:paddingBottom="3dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:elegantTextHeight="true"
+                    android:layout_marginTop="10dp"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:text="@string/thanksrom"
+                    android:fontFamily="@font/gilroyregular"
+                    android:paddingBottom="3dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:elegantTextHeight="true"
+                    android:layout_marginTop="10dp"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:text="@string/thankstester"
+                    android:fontFamily="@font/gilroyregular"
+                    android:paddingBottom="3dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elegantTextHeight="true"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:text="@string/nametester"
+                    android:fontFamily="@font/gilroyregular"
+                    android:paddingBottom="3dp"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
     </androidx.core.widget.NestedScrollView>
 

@@ -22,15 +22,14 @@ import java.util.ArrayList;
  * Nama : Ari Sumardi
  * NIM  : 10117162
  * Coding : 10 Juni 2020, 21.00 - 01.28 WIB
- *
- * */
+ */
 
 public class AddonsAdapter extends RecyclerView.Adapter<AddonsAdapter.MagiskViewHolder> {
 
     Context mContext;
     private ArrayList<ModelAddons> mMagiskList;
 
-    public AddonsAdapter(Context context, ArrayList<ModelAddons> magiskList){
+    public AddonsAdapter(Context context, ArrayList<ModelAddons> magiskList) {
         this.mContext = context;
         this.mMagiskList = magiskList;
     }
@@ -48,9 +47,9 @@ public class AddonsAdapter extends RecyclerView.Adapter<AddonsAdapter.MagiskView
     public void onBindViewHolder(@NonNull MagiskViewHolder holder, int position) {
         ModelAddons currentItem = mMagiskList.get(position);
 
-        String tVersi  = currentItem.getmVersi();
+        String tVersi = currentItem.getmVersi();
         String tStatus = currentItem.getmStatus();
-        String tImage  = currentItem.getmImage();
+        String tImage = currentItem.getmImage();
 
         holder.mLink = currentItem.getmLink();
         holder.mVersi.setText(tVersi);
@@ -63,7 +62,7 @@ public class AddonsAdapter extends RecyclerView.Adapter<AddonsAdapter.MagiskView
         return mMagiskList.size();
     }
 
-    public static class  MagiskViewHolder extends RecyclerView.ViewHolder{
+    public static class MagiskViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView mImage;
         public TextView mVersi;
@@ -78,8 +77,8 @@ public class AddonsAdapter extends RecyclerView.Adapter<AddonsAdapter.MagiskView
             mImage = itemView.findViewById(R.id.imgMagisk);
 
             itemView.setOnClickListener(v -> {
-              Intent GoUrl = new Intent(Intent.ACTION_VIEW, Uri.parse(mLink));
-              itemView.getContext().startActivity(GoUrl);
+                Intent GoUrl = new Intent(Intent.ACTION_VIEW, Uri.parse(mLink));
+                itemView.getContext().startActivity(GoUrl);
             });
         }
     }

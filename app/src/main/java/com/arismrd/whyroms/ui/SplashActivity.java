@@ -12,8 +12,7 @@ import com.arismrd.whyroms.R;
  * Nama : Ari Sumardi
  * NIM  : 10117162
  * Coding : 01 Juli 2020, 21.00 - 01.28 WIB
- *
- * */
+ */
 
 public class SplashActivity extends AppCompatActivity {
 

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Cache;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
@@ -31,8 +32,7 @@ import java.util.ArrayList;
  * Nama : Ari Sumardi
  * NIM  : 10117162
  * UpdateCoding : -
- *
- * */
+ */
 public class DeviceActivity extends BaseActivity {
     private RecyclerView mRecyclerView;
     private DevicesAdapter mDevAdapter;
@@ -62,7 +62,7 @@ public class DeviceActivity extends BaseActivity {
 
     }
 
-    private void getData(){
+    private void getData() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Mohon tunggu...");
         progressDialog.show();
@@ -75,7 +75,7 @@ public class DeviceActivity extends BaseActivity {
                     try {
                         JSONArray jsonArray = response.getJSONArray("devices");
 
-                        for (int i = 0; i < jsonArray.length(); i++){
+                        for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject hit = jsonArray.getJSONObject(i);
 
                             tName = hit.getString("nama_devices");
@@ -83,7 +83,7 @@ public class DeviceActivity extends BaseActivity {
                             tImg = hit.getString("img_devices");
                             mDevList.add(new ModelDevices
                                     (
-                                           tName, tCode, tImg
+                                            tName, tCode, tImg
                                     )
                             );
                         }
@@ -98,7 +98,7 @@ public class DeviceActivity extends BaseActivity {
                 }, error -> {
             error.printStackTrace();
             progressDialog.dismiss();
-        }){
+        }) {
             @Override
             protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
                 try {
@@ -106,7 +106,8 @@ public class DeviceActivity extends BaseActivity {
                     if (cacheEntry == null) {
                         cacheEntry = new Cache.Entry();
                     }
-                    final long cacheHitButRefreshed = 20 * 60 * 1000; // in 20 minutes cache will be hit, but also refreshed on background
+
+                    final long cacheHitButRefreshed = 10 * 60 * 1000; // in 3 minutes cache will be hit, but also refreshed on background
                     final long cacheExpired = 24 * 60 * 60 * 1000; // in 24 hours this cache entry expires completely
                     long now = System.currentTimeMillis();
                     final long softExpire = now + cacheHitButRefreshed;
@@ -131,6 +132,7 @@ public class DeviceActivity extends BaseActivity {
                     return Response.error(new ParseError(e));
                 }
             }
+
             @Override
             protected void deliverResponse(JSONObject response) {
                 super.deliverResponse(response);
@@ -146,6 +148,12 @@ public class DeviceActivity extends BaseActivity {
                 return super.parseNetworkError(volleyError);
             }
         };
+        DefaultRetryPolicy  retryPolicy = new DefaultRetryPolicy(
+                0,
+                -1,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        );
+        request.setRetryPolicy(retryPolicy);
         mRequestQueue.add(request);
     }
 }

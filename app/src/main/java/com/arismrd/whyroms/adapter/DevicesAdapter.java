@@ -20,15 +20,14 @@ import java.util.ArrayList;
  * Nama : Ari Sumardi
  * NIM  : 10117162
  * Coding : 10 Juni 2020, 21.00 - 01.28 WIB
- *
- * */
+ */
 
 public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.DeviceViewHolder> {
 
     private Context mContext;
     private ArrayList<ModelDevices> mPhoneList;
 
-    public DevicesAdapter(Context context, ArrayList<ModelDevices> phoneList){
+    public DevicesAdapter(Context context, ArrayList<ModelDevices> phoneList) {
         mContext = context;
         mPhoneList = phoneList;
     }
@@ -59,7 +58,7 @@ public class DevicesAdapter extends RecyclerView.Adapter<DevicesAdapter.DeviceVi
         return mPhoneList.size();
     }
 
-    public static class  DeviceViewHolder extends RecyclerView.ViewHolder{
+    public static class DeviceViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView mImg;
         public TextView mName;

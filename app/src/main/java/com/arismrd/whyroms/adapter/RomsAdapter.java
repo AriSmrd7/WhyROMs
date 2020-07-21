@@ -20,8 +20,7 @@ import java.util.ArrayList;
  * Nama : Ari Sumardi
  * NIM  : 10117162
  * Coding : 10 Juni 2020, 21.00 - 01.28 WIB
- *
- * */
+ */
 
 public class RomsAdapter extends RecyclerView.Adapter<RomsAdapter.RomViewHolder> {
 
@@ -33,11 +32,11 @@ public class RomsAdapter extends RecyclerView.Adapter<RomsAdapter.RomViewHolder>
         void onItemClick(int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener){
+    public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
 
-    public RomsAdapter(Context context, ArrayList<ModelRoms> romList){
+    public RomsAdapter(Context context, ArrayList<ModelRoms> romList) {
         mContext = context;
         mRomList = romList;
     }
@@ -66,7 +65,7 @@ public class RomsAdapter extends RecyclerView.Adapter<RomsAdapter.RomViewHolder>
         return mRomList.size();
     }
 
-    public class  RomViewHolder extends RecyclerView.ViewHolder{
+    public class RomViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView mImageView;
         public TextView mTextViewTitle;
@@ -77,10 +76,10 @@ public class RomsAdapter extends RecyclerView.Adapter<RomsAdapter.RomViewHolder>
             mTextViewTitle = itemView.findViewById(R.id.text_view_title);
             mImageView = itemView.findViewById(R.id.image_view);
             itemView.setOnClickListener(v -> {
-                if (mListener != null){
+                if (mListener != null) {
                     int position = getAdapterPosition();
 
-                    if (position != RecyclerView.NO_POSITION){
+                    if (position != RecyclerView.NO_POSITION) {
                         mListener.onItemClick(position);
                     }
                 }

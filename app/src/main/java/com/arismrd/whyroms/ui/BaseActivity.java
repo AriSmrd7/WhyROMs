@@ -14,8 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
  * Nama : Ari Sumardi
  * NIM  : 10117162
  * UpdateCoding : -
- *
- * */
+ */
 
 public abstract class BaseActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -50,17 +49,13 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
 
             if (itemId == R.id.navigation_home) {
                 startActivity(new Intent(this, MainActivity.class));
-            }
-            else if (itemId == R.id.navigaton_device) {
+            } else if (itemId == R.id.navigaton_device) {
                 startActivity(new Intent(this, DeviceActivity.class));
-            }
-            else if (itemId == R.id.navigaton_rom){
+            } else if (itemId == R.id.navigaton_rom) {
                 startActivity(new Intent(this, RomActivity.class));
-            }
-            else if (itemId == R.id.navigation_tutorial) {
+            } else if (itemId == R.id.navigation_tutorial) {
                 startActivity(new Intent(this, TutorialActivity.class));
-            }
-            else if (itemId == R.id.navigaton_about) {
+            } else if (itemId == R.id.navigaton_about) {
                 startActivity(new Intent(this, AboutActivity.class));
             }
 
@@ -69,7 +64,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
         return true;
     }
 
-    private void updateNavigationBarState(){
+    private void updateNavigationBarState() {
         int actionId = getNavigationMenuItemId();
         selectBottomNavigationBarItem(actionId);
     }
